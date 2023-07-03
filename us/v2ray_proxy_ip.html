@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--title-->
+    <title>v2ray accesses Socks5 static residential proxy</title>
+
+    <!-- SEO Meta description -->
+    <meta name="description" content="v2ray is a very popular network protocol software, it usually supports VMess, vless, Trojan, what I want to introduce today is Socks5, an encryption protocol about proxy IP, due to the information transmission on the Internet It is all carried out by using tcp or udp, so the use of socks5 proxy can realize seamless connection with v2ray, realize high encryption and disguise your ip!">
+    <meta name="keywords" content="v2ray, socks5 proxy, static residential proxy">
+    <meta name="author" content="ThemeTags">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="scok proxy IP blog" />
+    <!-- website name -->
+    <meta property="og:site" content="https://scoktw.com/" />
+    <!-- website link -->
+    <meta property="og:title" content="v2ray access Socks5 static residential proxy" />
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="v2ray is a very popular network protocol software, it usually supports VMess, vless, Trojan, what I want to introduce today is Socks5, an encryption protocol about proxy IP. Information transmission is carried out using tcp or udp, so the use of socks5 proxy can realize seamless connection with v2ray, realize high encryption and disguise your ip!"
+    />
+
+    <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="https://scoktw.com/v2ray_proxy_ip.html" />
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+
+    <!--favicon icon-->
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/png" sizes="16x16">
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!--build:css-->
+    <link rel="stylesheet" href="../assets/css/main-en.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "What are the advantages of v2ray accessing Socks5?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>v2ray's access to Socks5 static residential proxy can realize double-track encryption, play games, unlock streaming media, and have higher security. It can realize the complementary advantages between the two, and make your Socks5 static The performance of the residential agency is maximized!</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "Can v2ray access access dynamic proxy?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>Yes, v2ray is an open protocol software. If you need to access dynamic proxy, you need a certain development ability. There is an open source development kit in v2ray official, which can be realized through v2ray server Dynamic agent access!</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "What should I do if V2Ray crashes frequently?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>If you use Linux and enable systemd, you can use journalctl -u v2ray to view the log when V2Ray exits; <br>Generally, you can manually run v2ray -config=<config-file> -test to Check the error message;<br>In most cases, your software version is not the latest version, or it conflicts with other agent software. You need to uninstall other agent software first, or upgrade the latest version!</p>"
+                }
+            }]
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <!--header section start-->
+    <header id="header" class="header-main headroom">
+
+        <!--main header menu start-->
+        <div id="logoAndNav" class="main-header-menu-wrap bg-transparent">
+            <div class="container">
+                <nav class="js-mega-menu navbar navbar-expand-md header-nav">
+
+                    <!--logo start-->
+                    <a class="navbar-brand" href="index.html"><img src="../assets/img/logo-white-us.png" width="120" alt="logo" class="img-fluid" /></a>
+                    <!--logo end-->
+
+                    <!--responsive toggle button start-->
+                    <button type="button" class="navbar-toggler btn" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                        <span id="hamburgerTrigger">
+                            <span class="fas fa-bars"></span>
+                        </span>
+                    </button>
+                    <!--responsive toggle button end-->
+
+                    <!--main menu start-->
+                    <div id="div_1"></div>
+                    <!--main menu start-->
+                    <div id="navBar" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto main-navbar-nav">
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="720px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">Global proxy ip provider</a>
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">Global static residential proxy Merchant List(By Region)</span>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shared-hosting.html" title="US Proxy IP" rel="bookmark">US Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_china.html" title="China Proxy IP" rel="bookmark">China Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_europe.html" title="EU Proxy IP" rel="bookmark">EU Proxy IP <span class="badge badge-danger ml-2">Hot</span></a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_taiwan.html" title="Taiwan Proxy IP" rel="bookmark">Taiwan Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_hongkong.html" title="Hong Kong Proxy IP" rel="bookmark">Hong Kong Proxy IP</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_germany.html" title="Germany Proxy IP" rel="bookmark">Germany Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_uk.html" title="UK Proxy IP" rel="bookmark">UK Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_france.html" title="France Proxy IP" rel="bookmark">France Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_korea.html" title="Korea Proxy IP" rel="bookmark">Korea Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_jpan.html" title="Japan Proxy IP" rel="bookmark">Japan Proxy IP <span class="badge badge-danger ml-2">Hot</span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_eussia.html" title="Russia Proxy IP" rel="bookmark">Russia Proxy IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="spain_static_residential_agents.html" title="Spanish ISP Proxy" rel="bookmark">Spanish ISP Proxy</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="australia_static_residential_agents.html" title="Australia Static Proxy IP" rel="bookmark">Australia Static Proxy IP</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="secondary-bg">
+                                        <div class="u-header__product-banner-content position-relative z-index text-center text-white">
+                                            <div class="mb-4">
+                                                <h5 class="text-white">Top 12 Best Residential Proxy Service Providers</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">Proxy IP type</a>
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">Selected global agency IP (by type)</span>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_residential_proxy_ip.html" title="static residential proxy" rel="bookmark">Best Static Residential Proxy</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="data_center_proxy_ip.html" title="static residential proxy" rel="bookmark">Best Data Center Proxy</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="online_shopping.html" title="Best Sneaker proxies" rel="bookmark">Best Sneaker proxies</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="rotate_proxy_ip.html" title="Best Rotating Proxy" rel="bookmark">Best Rotating Proxy</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="fingerprint_browser.html" title="Best Anti-Detect Browsers" rel="bookmark">Best Anti-Detect Browsers</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="v2ray_proxy_ip.html" title="static residential proxy" rel="bookmark">v2ray access Socks5 proxy</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_ip.html" title="static residential proxy" rel="bookmark">Static IP and Dynamic IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_browser_settings_socks5.html" title="static residential proxy" rel="bookmark">Browser settings Socks5 proxy</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_iphone_settings_socks5.html" title="static residential proxy" rel="bookmark">CentOS7 builds Socks5</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">Best Proxy Providers</a>
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">Proxy IP Provider Review List</span>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="iproyal_proxy_ip.html" title="Summary of IPRoyal Evaluation" rel="bookmark">IPRoyal review</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shifter_proxy_ip.html" title="Summary of IPRoyal Evaluation" rel="bookmark">Shifter review</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_seller_ip.html" title="Summary of IPRoyal Evaluation" rel="bookmark">Proxy-seller review</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item header-nav-last-item d-flex align-items-center">
+                                <a href="article_list.html" class="btn outline-white-btn animated-btn">Article List</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--main menu end-->
+                </nav>
+            </div>
+        </div>
+        <!--main header menu end-->
+    </header>
+    <!--header section end-->
+    <!--header section end-->
+
+    <div class="main">
+
+        <!--hero section start-->
+        <section class="hero-equaubs hero-equal-height section-xl section-header text-white flex-column d-flex justify-content-center" style="background: url(../assets/img/bg-01.jpg)no-repeat center center / cover;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-9 col-lg-8">
+                        <div class="hero-content-left text-white text-center">
+                            <h1 class="text-white">v2ray accesses Socks5 static residential proxy</h1>
+                            <p class="lead">
+                                v2ray is a very popular network protocol software. It usually supports VMess, vless, Trojan. Today I will introduce Socks5, an encryption protocol about proxy IP. Because the information transmission on the Internet is carried out by using tcp or udp,
+                                so Using socks5 proxy can achieve seamless connection with v2ray, realize high encryption and disguise your ip!
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-us-promo promo-top pt-100 mt--165">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-6">
+                        <div class="card single-promo-card single-promo-hover shadow-sm">
+                            <div class="card-body py-5">
+                                <div class="post-content">
+                                    <p><b>What is v2ray? </b>v2ray is a protocol software that implements network interaction, routing and other processing for the network environment. It can easily manage the network environment corresponding to your computer,
+                                        browser, and software, and realize obfuscation and camouflage for your local network environment Transmission, the top-level module of V2Ray has developed a total of 32 transmission protocols. The one we have used
+                                        the most is wechat-video (that is, the transmission of streaming media such as unlocking Netflix), and the most common ones are TCP and UDP transmission protocols!
+                                    </p>
+                                    <p>v2ray supports the implementation of the standard Socks protocol, which is traditionally compatible with Socks 4, Socks 4a and Socks 5, and is also a UDP streaming media proxy protocol. </p>
+
+
+                                    <h2 class="post-title">Advantages of using v2ray! </h2>
+                                    <p>1, v2ray is fully compatible with Socks4, Socks4a and Socks5 proxies, which can ensure the safe and stable operation of the network environment! </p>
+                                    <p>2, v2ray can implement sub-application agents, so that your environment can be divided according to the form you need! </p>
+                                    <p>3, v2ray has data packet camouflage, which is similar to Shadowsocks-rss confusion. In addition, mKCP data packets can also be camouflaged, camouflaging common traffic, making identification more difficult</p>
+                                    <p>4, v2ray routing function, you can set the flow direction of the specified data packet at will, and you can remove advertisements and anti-tracking</p>
+                                    <h2 class="post-title">The principle of compatibility between Socks5 and v2ray! </h2>
+                                    <p>The configuration of Socks5 is divided into two parts, InboundConfigurationObject and OutboundConfigurationObject, which correspond to the settings item in the inbound and outbound protocol configuration respectively.
+                                        <br>Although socks outbound can be used as a configuration for external access, the socks protocol does not encrypt the transmission, so it is not suitable for transmission through the public network. The more meaningful
+                                        use of socks outbound is that in special cases, only socks proxy can be used to access the internal network externally, and it can be used as a pre-proxy for other protocols to connect to proxy servers<br>Socks
+                                        The protocol authentication method supports "noauth" anonymous method and "password" user password method. The default value is "noauth".
+                                        <br>Recommended reading: <a href="https://scoktw.com/">9 Best Static Residential Agents (ISP Agents) in the World</a></p>
+                                    <p>Introduce the detailed steps of how to access Socks5 static residential proxy in v2ray</p>
+                                    <div class="row align-items-center align-cont">
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">1</u>Download and install v2ray</h2>
+                                                    <p class="lead">
+                                                        Download v2ray from the Google App Store, or go to the official v2ray download. The official version of v2ray is a GitHub mirror library, you can go and have a look, but there are too many official versions, and I am still not used to it. I usually choose
+                                                        the version of v2rayNG!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/2023-03-04 105411.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/0323.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">2</u> v2ray add and import Socks5 proxy</h2>
+                                                    <p class="lead">Open the v2ray software, click the + sign on the sidebar, and select "Manual input [Socks]", you need to pay attention to that the account information must be complete and accurate, and the account password
+                                                        must not contain spaces or errors! </p>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">3</u>Enter Socks5 proxy information correctly</h2>
+                                                    <p class="lead">Following the operation in the previous step, fill in the Socks5 proxy information you purchased correctly</p>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/2-515x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/3-518x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">4</u> Save information</h2>
+                                                    <p class="lead">After confirming that the information is filled in correctly, click ✓ in the upper right corner to save the node information. </p>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">5</u>Set up proxy</h2>
+                                                    <p class="lead">The interface will jump back to the proxy node list. Open the menu in the upper left corner and click Settings:</p>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/4-536x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/5-519x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">6</u>Set up DNS and local routing</h2>
+                                                    <p class="lead">Here we select enable local DNS, enable virtual DNS (ignore if there is no such option), select Asls (recommended) for domain name policy, and then return to the list page:
+                                                    </p>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">7</u>Start v2ray agent</h2>
+                                                    <p class="lead">At this time, select (click) the node we just added, and then click the button in the lower right corner of the screen to connect our node:</p>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/6-533x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/451217.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">8</u> Detection Proxy</h2>
+                                                    <p class="lead">At this time, 🔑a symbol appears in the signal bar of the mobile phone, which proves that your agent has successfully started. You can also click on the bottom of the software to check the ping value
+                                                        of your agent
+                                                    </p>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-md-9 col-lg-12" style="margin-top: 50px;">
+                                            <div class="section-heading mb-5">
+                                                <h2 class="post-title">Summary</h2>
+                                                <p>Socks protocol is definitely less computationally intensive than vmess protocol. For example, ss, ssr, and boork are finally connected by socks5 protocol, and online games must pass socks5, so it is impossible
+                                                    to calculate too much. <br /> socks does not have so much encryption, SOCKS is actually a network proxy protocol. The SOCKS proxy is divided into SOCKS4 and SOCKS5. The difference between the two is
+                                                    that the SOCKS4 proxy only supports the TCP protocol (that is, the Transmission Control Protocol), while the SOCKS5 proxy supports both the TCP protocol and the UDP protocol (that is, the User Data Packet
+                                                    Protocol). Authentication mechanism, server-side domain name resolution, etc.
+                                                    <br /> SOCKS5 can do what SOCK4 can do, but SOCK4 can't do what SOCKS5 can do! The socks protocol is used to play games, watching videos is a very good choice, you can try it yourself!
+                                                </p>
+                                                <p>Recommended reading: <a href="iproyal_proxy_ip.html">IPRoyal speed and performance evaluation and purchase plan!</a></p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--hero section end-->
+
+
+
+        <!--faq section start-->
+        <div id="faq" class="ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div id="accordion-one" class="accordion accordion-faq">
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                                    <h6 class="mb-0 d-inline-block">What are the advantages of v2ray accessing Socks5?
+                                    </h6>
+                                </a>
+                                <div id="collapseOne" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>v2ray access to Socks5 static residential proxy can realize dual-track encryption, play games, unlock streaming media, with higher security, and can realize the complementary advantages between the two, so that
+                                            your Socks5 static residential proxy performance can be maximized Extreme!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseTwo">
+                                    <h6 class="mb-0 d-inline-block">Can v2ray access to dynamic proxy? </h6>
+                                </a>
+                                <div id="collapseTwo" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p> Yes, v2ray is an open protocol software. If you need to access dynamic proxy, you need certain development capabilities. V2ray has an official open source development kit, which can realize dynamic proxy access
+                                            through v2ray server !
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseThree">
+                                    <h6 class="mb-0 d-inline-block">What should I do if V2Ray crashes frequently?
+                                    </h6>
+                                </a>
+                                <div id="collapseThree" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>If you use Linux and enable systemd, you can use journalctl -u v2ray to view the log when V2Ray exits; <br>Generally, you can manually run v2ray -config=
+                                            <config-file> -test to view error messages;
+                                                <br>In most cases, your software version is not the latest version, or it conflicts with other agent software, you need to uninstall other agent software first, or upgrade the latest version!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--faq section end-->
+
+
+
+    </div>
+
+    <!--footer section start-->
+    <footer class="footer-section">
+        <!--footer top start-->
+        <div class="footer-top gradient-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row footer-top-wrap">
+                            <div class="col-12">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">Sponsor</h4>
+                                    <ul class="list-inline security-icon-list">
+                                        <li class="list-inline-item">
+                                            <a href="https://iproyal.cn/?r=148124" target="_blank" rel="nofollow noopener"><img src="../assets/img/norton-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="https://scoktw.com/"></a><img src="../assets/img/norton2-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="https://share.adspower.net/6TWoFzATr7NMZQT" target="_blank" rel="nofollow noopener"></a><img src="../assets/img/norton3-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=68115" target="_blank" rel="nofollow noopener"></a><img src="../assets/img/norton4-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row footer-top-wrap">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">Blog</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/shared-hosting.html">Best US Proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_china.html">Best China Proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Best European Proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Best Taiwan Proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_uk.html">Best UK Proxy IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">Common tools</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Fingerprint Browser</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">socks5 proxy tool</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">HTTP proxy tool</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Chrome Proxy Plugin</a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">Proxy Classification</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">data center proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Residential Proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Static proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Dynamic proxy IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">Mobile 4G Proxy IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer top end-->
+
+        <!--footer copyright start-->
+        <div class="footer-bottom gray-light-bg py-3">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-md-5 col-lg-5">
+                        <p class="copyright-text pb-0 mb-0">Copyrights © 2021. All rights reserved by
+                            <a href="https://scoktw.com" target="_blank">Proxy IP</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--footer copyright end-->
+    </footer>
+    <!--footer section end-->
+    <!--bottom to top button start-->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <span class="ti-rocket"></span>
+    </button>
+    <!--bottom to top button end-->
+    <script type="text/javascript">
+        var div_child = '<ul class="navbar-nav ml-auto main-navbar-nav"> <li class="nav-item hs-has-sub-menu custom-nav-item"> <a id="pagesMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="./v2ray_proxy_ip.html" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"> <img src="../assets/img/svg/us.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">English</a> <ul id="pagesSubMenu" class="hs-sub-menu main-sub-menu animated" aria-labelledby="pagesMegaMenu" style="min-width: 160px; display: none;"> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="../hk/v2ray_proxy_ip.html"> <img src="../assets/img/svg/hk.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">繁体</a> </li> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="../v2ray_proxy_ip.html"> <img src="../assets/img/svg/cn.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">中文</a> </li> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="https://scoktw.com/ru/index.html"> <img src="../assets/img/svg/ru.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">Русский</a> </li> </ul> </li> </ul>'
+        var c = document.getElementById('div_1');
+        c.innerHTML += div_child;
+    </script>
+    <!--build:js-->
+    <script src="../assets/js/vendors/jquery-3.5.1.min.js"></script>
+    <script src="../assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/vendors/bootstrap-slider.min.js"></script>
+    <script src="../assets/js/vendors/jquery.countdown.min.js"></script>
+    <script src="../assets/js/vendors/jquery.easing.min.js"></script>
+    <script src="../assets/js/vendors/owl.carousel.min.js"></script>
+    <script src="../assets/js/vendors/validator.min.js"></script>
+    <script src="../assets/js/vendors/jquery.waypoints.min.js"></script>
+    <script src="../assets/js/vendors/jquery.rcounterup.js"></script>
+    <script src="../assets/js/vendors/magnific-popup.min.js"></script>
+    <script src="../assets/js/vendors/hs.megamenu.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <!--endbuild-->
+</body>
+
+</html>
+
+</html>

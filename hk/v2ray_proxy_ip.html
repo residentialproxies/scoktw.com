@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-hk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--title-->
+    <title>v2ray接入Socks5靜態住宅代理</title>
+
+    <!-- SEO Meta description -->
+    <meta name="description" content="v2ray是一款非常流行的網絡協議軟件，它通常支持VMess,vless,Trojan,今天要介紹的是關於代理IP的一種加密協議Socks5，由於網上的信息傳輸都是運用tcp或udp進行的，所以使用socks5代理可以實現與v2ray無縫銜接，實現高度加密偽裝你的ip！">
+    <meta name="keywords" content="v2ray,socks5代理,靜態住宅代理">
+    <meta name="author" content="ThemeTags">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="scok代理IP博客" />
+    <!-- website name -->
+    <meta property="og:site" content="https://scoktw.com/" />
+    <!-- website link -->
+    <meta property="og:title" content="v2ray接入Socks5靜態住宅代理" />
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="v2ray是一款非常流行的網絡協議軟件，它通常支持VMess,vless,Trojan,今天要介紹的是關於代理IP的一種加密協議Socks5，由於網上的信息傳輸都是運用tcp或udp進行的，所以使用socks5代理可以實現與v2ray無縫銜接，實現高度加密偽裝你的ip！" />
+
+    <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="https://scoktw.com/v2ray_proxy_ip.html" />
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+
+    <!--favicon icon-->
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/png" sizes="16x16">
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!--build:css-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "v2ray接入Socks5有什麼優勢？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>v2ray接入Socks5靜態住宅代理可以實現雙賽道加密，暢玩遊戲，解鎖流媒體，安全性更高，能夠實現兩者之間的優勢互補，讓你的Socks5靜態住宅代理性能發揮到極致！ </p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "v2ray接入能接入動態代理嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>可以，v2ray是一款可開放性的協議軟件，如果你需要接入動態代理，需要一定的開發能力，在v2ray官方有開源的開發包，可以通過v2ray服務端實現動態代理的接入！</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "V2Ray經常閃退怎麼辦？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>如果你使用Linux並開啟了systemd，可以使用 journalctl -u v2ray查看 V2Ray 退出時的日誌； <br>一般情況可以手動運行 v2ray -config=<config-file> -test 來查看錯誤信息；<br>大多數情況是您的軟件版本不是最新版，或者與其他代理軟件衝突需要你先卸載掉其他代理軟件，或者升級最新版本!</p>"
+                }
+            }]
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <!--header section start-->
+    <header id="header" class="header-main headroom">
+
+        <!--main header menu start-->
+        <div id="logoAndNav" class="main-header-menu-wrap bg-transparent">
+            <div class="container">
+                <nav class="js-mega-menu navbar navbar-expand-md header-nav">
+
+                    <!--logo start-->
+                    <a class="navbar-brand" href="index.html"><img src="../assets/img/logo-white.png" width="120" alt="logo" class="img-fluid" /></a>
+                    <!--logo end-->
+
+                    <!--responsive toggle button start-->
+                    <button type="button" class="navbar-toggler btn" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                        <span id="hamburgerTrigger">
+                            <span class="fas fa-bars"></span>
+                        </span>
+                    </button>
+                    <!--responsive toggle button end-->
+
+                    <!--main menu start-->
+                    <div id="div_1"></div>
+                    <!--main menu start-->
+                    <div id="navBar" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto main-navbar-nav">
+                            <!--home end-->
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="index.html" aria-haspopup="true" aria-expanded="false">全球靜態住宅代理IP商列表</a>
+                                <!--services mega menu start-->
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">全球靜態住宅代理IP商列表（按地區分類）</span>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shared-hosting.html" title="美國代理IP" rel="bookmark">美國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_china.html" title="中國代理IP" rel="bookmark">中國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_europe.html" title="歐洲代理IP" rel="bookmark">歐洲代理IP <span
+                                                                class="badge badge-danger ml-2">Hot</span></a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_taiwan.html" title="臺灣代理ip" rel="bookmark">臺灣代理ip</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_hongkong.html" title="香港代理IP" rel="bookmark">香港代理IP</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_germany.html" title="德國代理IP" rel="bookmark">德國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_uk.html" title="英國代理IP" rel="bookmark">英國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_france.html" title="法國代理IP" rel="bookmark">法國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_korea.html" title="韓國代理ip" rel="bookmark">韓國代理ip</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_jpan.html" title="日本代理IP" rel="bookmark">日本代理IP <span
+                                                                class="badge badge-danger ml-2">Hot</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_eussia.html" title="俄羅斯代理IP" rel="bookmark">俄羅斯代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="spain_static_residential_agents.html" title="西班牙ISP代理" rel="bookmark">西班牙ISP代理</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="australia_static_residential_agents.html" title="澳大利亞靜態代理IP" rel="bookmark">澳大利亞靜態代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mega Menu Banner -->
+                                    <div class="secondary-bg">
+                                        <div class="u-header__product-banner-content position-relative z-index text-center text-white">
+                                            <div class="mb-4">
+                                                <h5 class="text-white">精選全球排名靠前的12家IP代理商！</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Mega Menu Banner -->
+                                </div>
+                                <!--services mega menu end-->
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">代理IP商列表(按類型)</a>
+                                <!--services mega menu start-->
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">精選全球代理IP商（按類型）</span>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_residential_proxy_ip.html" title="最佳靜態住宅代理IP" rel="bookmark">最佳靜態住宅代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="data_center_proxy_ip.html" title="最佳數據中心代理IP" rel="bookmark">最佳數據中心代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="online_shopping.html" title="最佳電商網購代理IP" rel="bookmark">最佳電商網購代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="rotate_proxy_ip.html" title="最佳動態代理IP" rel="bookmark">最佳動態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="best_exclusive_ipv4_proxy.html" title="最佳獨享IPv4代理" rel="bookmark">最佳獨享IPv4代理</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="fingerprint_browser.html" title="常用的26款指紋瀏覽器" rel="bookmark">常用的26款指紋瀏覽器</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="v2ray_proxy_ip.html" title="v2ray接入Socks5代理" rel="bookmark">v2ray接入Socks5代理</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_ip.html" title="靜態IP和動態IP的區別" rel="bookmark">靜態IP和動態IP的區別</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_browser_settings_socks5.html" title="本地瀏覽器+Socks5代理方法" rel="bookmark">本地瀏覽器+Socks5代理方法</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_iphone_settings_socks5.html" title="CentOS7搭建Socks5代理服務器" rel="bookmark">CentOS7搭建Socks5代理服務器</a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!--services mega menu end-->
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">代理IP商測評列表</a>
+                                <!--services mega menu start-->
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">代理IP商測評列表</span>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="iproyal_proxy_ip.html" title="IPRoyal測評總結" rel="bookmark">IPRoyal測評總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shifter_proxy_ip.html" title="Shifter測評總結" rel="bookmark">Shifter測評總結</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_seller_ip.html" title="Proxy-seller測評總結" rel="bookmark">Proxy-seller測評總結</a></li>
+
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!--services mega menu end-->
+                            <li class="nav-item header-nav-last-item d-flex align-items-center">
+                                <a href="article_list.html" class="btn outline-white-btn animated-btn">文章列表</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--main menu end-->
+                </nav>
+            </div>
+        </div>
+        <!--main header menu end-->
+    </header>
+    <!--header section end-->
+    <!--header section end-->
+
+    <div class="main">
+
+        <!--hero section start-->
+        <section class="hero-equaubs hero-equal-height section-xl section-header text-white flex-column d-flex justify-content-center" style="background: url(../assets/img/bg-01.jpg)no-repeat center center / cover;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-9 col-lg-8">
+                        <div class="hero-content-left text-white text-center">
+                            <h1 class="text-white">v2ray接入Socks5靜態住宅代理</h1>
+                            <p class="lead">
+                                v2ray是一款非常流行的網絡協議軟件，它通常支持VMess,vless,Trojan,今天要介紹的是關於代理IP的一種加密協議Socks5，由於網上的信息傳輸都是運用tcp或udp進行的，所以使用socks5代理可以實現與v2ray無縫銜接，實現高度加密偽裝你的ip！
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-us-promo promo-top pt-100 mt--165">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-6">
+                        <div class="card single-promo-card single-promo-hover shadow-sm">
+                            <div class="card-body py-5">
+                                <div class="post-content">
+                                    <p><b>什麼是v2ray？</b>v2ray是一種實現網絡交互、路由等針對網絡環境的處理的協議軟件，他能輕鬆管理你點的電腦，瀏覽器，軟件所對應的網絡環境，對您的本地網絡環境實現混淆偽裝傳輸，V2Ray的頂層模塊一共開發了32中傳輸協議，我們用過的最多的的就是wechat-video（也就是解鎖Netflix等流媒體的傳輸），最普通的就是TCP，UDP傳輸協議！
+                                    </p>
+                                    <p>v2ray支持標準Socks協議實現，傳統的兼容 Socks 4、Socks 4a 和Socks 5，也是UDP流媒體代理協議。</p>
+
+
+                                    <h2 class="post-title">使用v2ray的優勢！</h2>
+                                    <p>1，v2ray能完全兼容Socks4、Socks4a 和Socks5代理，能夠保證網絡環境安全穩定運行！</p>
+                                    <p>2，v2ray能夠實現分應用代理，讓你的環境按照你需要的形式來區分開！</p>
+                                    <p>3，v2ray有數據包偽裝，類似於 Shadowsocks-rss 的混淆，另外對於 mKCP 的數據包也可偽裝，偽裝常見流量，令識別更困難</p>
+                                    <p>4，v2ray路由功能，可以隨意設定指定數據包的流向，去廣告、反跟蹤都可以</p>
+                                    <h2 class="post-title">Socks5與v2ray的兼容原理！</h2>
+                                    <p>Socks5的配置分為兩部分，InboundConfigurationObject和OutboundConfigurationObject，分別對應入站和出站協議配置中的settings項。<br>雖然socks outbound可以作為對外訪問的配置，但socks協議沒有對傳輸加密，不適宜經公網中傳輸。socks outbound 更有意義的用法是在特殊情況下，只能使用socks proxy對外訪問內部網絡中，作為為其他協議連接代理服務器的前置代理使用<br>Socks
+                                        協議的認證方式，支持"noauth"匿名方式和"password"用戶密碼方式。默認值為"noauth"。
+                                        <br>推薦閱讀：<a href="https://scoktw.com/">9家全球最佳靜態住宅代理（ISP代理）</a></p>
+                                    <p>介紹一下如何在v2ray接入Socks5靜態住宅代理的詳細步驟</p>
+                                    <div class="row align-items-center align-cont">
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">1</u>下載安裝v2ray</h2>
+                                                    <p class="lead">
+                                                        在谷歌應用商店下載v2ray，或者去v2ray官方下載，v2ray的官方是一個GitHub鏡像庫，可以去看看，但是官方的版本太多了，我還是不太習慣，我一般都選擇v2rayNG這個版本！
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/2023-03-04 105411.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/0323.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">2</u>v2ray添加導入Socks5代理</h2>
+                                                    <p class="lead">打開v2ray軟件，點擊側欄的 + 號，選擇 “手動輸入[Socks] ”，你需要注意的是，賬號信息一定要完整準確，賬號密碼不能出現空格或者錯誤！ </p>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">3</u>正確輸入Socks5代理信息</h2>
+                                                    <p class="lead">繼上一步的操作，正確的填寫好你購買的Socks5代理信息</p>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/2-515x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/3-518x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">4</u>保存信息</h2>
+                                                    <p class="lead">確認信息填寫無誤後，點擊右上角的✓，保存節點信息。</p>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">5</u>設置代理</h2>
+                                                    <p class="lead">界面會跳回到代理節點列表。打開左上角的菜單，點擊設置:</p>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/4-536x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/5-519x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">6</u>設置DNS及本地路由</h2>
+                                                    <p class="lead">這裡我們選中 啟用本地 DNS，啟用虛擬 DNS(如果沒有這個選項可以忽略)，域名策略選擇 Asls (推薦使用)，然後返回列表頁:
+                                                    </p>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">7</u>啟動v2ray代理</h2>
+                                                    <p class="lead">這時候選擇（點擊）我們剛剛增加的節點，然後點擊屏幕右下角的按鈕，連接我們的節點：</p>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/6-533x1024.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row align-items-center align-cont" id="items-center-155">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <img src="../assets/img/451217.png" alt="hosting" class="img-fluid">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="cta-new-wrap">
+                                                    <h2><u class="res_u">8</u>檢測代理</h2>
+                                                    <p class="lead">此時手機信號欄出現一個 🔑的符號，證明你的代理啟動成功，也可以點擊軟件底部，檢測你的代理的ping值
+                                                    </p>
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-md-9 col-lg-12" style="margin-top: 50px;">
+                                            <div class="section-heading mb-5">
+                                                <h2 class="post-title">總結</h2>
+                                                <p>socks協議肯定比vmess協議計算量小，如ss，ssr，boork最終是socks5協議給我們連接，網絡遊戲都要通過socks5，所以這不可能計算量太大的。<br /> socks也沒有那麼多的加密，SOCKS其實是一種網絡代理協議。SOCKS代理又分為SOCKS4和SOCKS5，二者不同的是SOCKS4代理只支持TCP協議（即傳輸控制協議），而SOCKS5代理則既支持TCP協議又支持UDP協議（即用戶數據包協議），還支持各種身份驗證機制、服務器端域名解析等。
+                                                    <br /> SOCK4能做到的SOCKS5都可得到，但SOCKS5能夠做到的SOCK4則不一定能做到！socks協議用來打遊戲，看視頻是一個非常不錯的選擇，大家可以動手試試吧！
+                                                </p>
+                                                <p>推薦閱讀：<a href="iproyal_proxy_ip.html">IPRoyal速度和性能測評及購買方案!</a></p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--hero section end-->
+
+
+
+        <!--faq section start-->
+        <div id="faq" class="ptb-100 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div id="accordion-one" class="accordion accordion-faq">
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                                    <h6 class="mb-0 d-inline-block">v2ray接入Socks5有什麼優勢？
+                                    </h6>
+                                </a>
+                                <div id="collapseOne" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>v2ray接入Socks5靜態住宅代理可以實現雙賽道加密，暢玩遊戲，解鎖流媒體，安全性更高，能夠實現兩者之間的優勢互補，讓你的Socks5靜態住宅代理性能發揮到極致！
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseTwo">
+                                    <h6 class="mb-0 d-inline-block">v2ray接入能接入動態代理嗎？</h6>
+                                </a>
+                                <div id="collapseTwo" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p> 可以，v2ray是一款可開放性的協議軟件，如果你需要接入動態代理，需要一定的開發能力，在v2ray官方有開源的開發包，可以通過v2ray服務端實現動態代理的接入！
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseThree">
+                                    <h6 class="mb-0 d-inline-block">V2Ray經常閃退怎麼辦？
+                                    </h6>
+                                </a>
+                                <div id="collapseThree" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>如果你使用Linux並開啟了systemd，可以使用 journalctl -u v2ray查看 V2Ray 退出時的日誌； <br>一般情況可以手動運行 v2ray -config=
+                                            <config-file> -test 來查看錯誤信息；
+                                                <br>大多數情況是您的軟件版本不是最新版，或者與其他代理軟件衝突需要你先卸載掉其他代理軟件，或者升級最新版本!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--faq section end-->
+
+
+
+    </div>
+
+    <!--footer section start-->
+    <footer class="footer-section">
+        <!--footer top start-->
+        <div class="footer-top gradient-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row footer-top-wrap">
+                            <div class="col-12">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">贊助商</h4>
+                                    <ul class="list-inline security-icon-list">
+                                        <li class="list-inline-item">
+                                            <a href="https://iproyal.cn/?r=148124" target="_blank" rel="nofollow noopener"><img src="../assets/img/norton-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="https://scoktw.com/"></a><img src="../assets/img/norton2-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="https://share.adspower.net/6TWoFzATr7NMZQT" target="_blank" rel="nofollow noopener"></a><img src="../assets/img/norton3-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=68115" target="_blank" rel="nofollow noopener"></a><img src="../assets/img/norton4-logo.png" width="110" alt="security" class="img-fluid" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row footer-top-wrap">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">博客</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/shared-hosting.html">最佳美國代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_china.html">最佳中國代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">最佳歐洲代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">最佳臺灣代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_uk.html">最佳英國代理IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">常用工具</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">指紋瀏覽器</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">socks5代理工具</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">HTTP代理工具</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/static_browser_settings_socks5.html">Chrome Proxy 插件</a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">代理分類</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">數據中心代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">住宅代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">靜態代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">動態代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com">移動4G代理IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer top end-->
+
+        <!--footer copyright start-->
+        <div class="footer-bottom gray-light-bg py-3">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-md-5 col-lg-5">
+                        <p class="copyright-text pb-0 mb-0">Copyrights © 2021. All rights reserved by
+                            <a href="https://scoktw.com" target="_blank">代理IP</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--footer copyright end-->
+    </footer>
+    <!--footer section end-->
+    <!--bottom to top button start-->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <span class="ti-rocket"></span>
+    </button>
+    <!--bottom to top button end-->
+    <script type="text/javascript">
+        var div_child = '<ul class="navbar-nav ml-auto main-navbar-nav"> <li class="nav-item hs-has-sub-menu custom-nav-item"> <a id="pagesMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="/v2ray_proxy_ip.html" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"><img src="../assets/img/svg/hk.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">繁體</a> <ul id="pagesSubMenu" class="hs-sub-menu main-sub-menu animated" aria-labelledby="pagesMegaMenu" style="min-width: 160px; display: none;"> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="../v2ray_proxy_ip.html"> <img src="../assets/img/svg/cn.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">中文</a> </li><li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="../us/v2ray_proxy_ip.html"> <img src="../assets/img/svg/us.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">English</a> </li> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="https://scoktw.com/ru/index.html"> <img src="../assets/img/svg/ru.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">Русский</a> </li> </ul> </li> </ul>'
+        var c = document.getElementById('div_1');
+        c.innerHTML += div_child;
+    </script>
+    <!--build:js-->
+    <script src="../assets/js/vendors/jquery-3.5.1.min.js"></script>
+    <script src="../assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/vendors/bootstrap-slider.min.js"></script>
+    <script src="../assets/js/vendors/jquery.countdown.min.js"></script>
+    <script src="../assets/js/vendors/jquery.easing.min.js"></script>
+    <script src="../assets/js/vendors/owl.carousel.min.js"></script>
+    <script src="../assets/js/vendors/validator.min.js"></script>
+    <script src="../assets/js/vendors/jquery.waypoints.min.js"></script>
+    <script src="../assets/js/vendors/jquery.rcounterup.js"></script>
+    <script src="../assets/js/vendors/magnific-popup.min.js"></script>
+    <script src="../assets/js/vendors/hs.megamenu.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <!--endbuild-->
+</body>
+
+</html>
+
+</html>

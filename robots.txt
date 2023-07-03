@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /affiliates.html?aff=*
+Disallow: /dai.html
+Sitemap: https://scoktw.com/sitemap.xml
+Sitemap: https://scoktw.com/sitemap-ru.xml
+Sitemap: https://scoktw.com/sitemap-hk.xml
+Sitemap: https://scoktw.com/sitemap-en.xml
