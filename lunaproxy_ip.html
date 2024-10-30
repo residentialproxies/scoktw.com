@@ -833,24 +833,6 @@
             }, 'slow');
         }
 
-        function copyCouponCode(code) {
-  // 检查浏览器是否支持复制功能
-  if (navigator.clipboard && window.isSecureContext) {
-    // 复制文本到剪贴板
-    navigator.clipboard.writeText(code).then(function() {
-      // 复制成功
-      console.log('优惠码已复制到剪贴板');
-      // 这里可以添加复制成功的提示，例如：
-      alert('优惠码已复制到剪贴板');
-    }, function(err) {
-      // 复制失败
-      console.error('无法复制优惠码: ', err);
-    });
-  } else {
-    // 浏览器不支持复制功能，可以在这里处理备用方案
-    console.log('浏览器不支持复制到剪贴板');
-  }
-}
     </script>
     <!--build:js-->
     <script src="assets/js/vendors/jquery-3.5.1.min.js"></script>
