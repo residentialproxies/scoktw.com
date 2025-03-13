@@ -952,7 +952,7 @@
         var div_child = '<ul class="navbar-nav ml-auto main-navbar-nav"> <li class="nav-item hs-has-sub-menu custom-nav-item"> <a id="pagesMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="/iproyal_proxy_ip.html" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"><img src="assets/img/svg/cn.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">中文</a> <ul id="pagesSubMenu" class="hs-sub-menu main-sub-menu animated" aria-labelledby="pagesMegaMenu" style="min-width: 160px; display: none;"> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="hk/iproyal_proxy_ip.html"> <img src="assets/img/svg/hk.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">繁体</a> </li><li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="us/iproyal_proxy_ip.html"> <img src="assets/img/svg/us.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">English</a> </li> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="https://scoktw.com/ru/index.html"> <img src="assets/img/svg/ru.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">Русский</a> </li> </ul> </li> </ul>'
         var c = document.getElementById('div_1');
         c.innerHTML += div_child;
-        var div_chold = '<div class="ratting-content"> <h5><img src="assets/img/logo-wide.svg" width="120" alt="logo" class="img-fluid" /></h5> <ul class="list-inline ratting-list mb-2"> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> </ul> <p>IP皇家是一家久经考验的代理服务提供商，提供一系列代理解决方案，包括住宅、数据中心、4G 移动和运动鞋代理. 其住宅代理解决方案脱颖而出，极具吸引力，其价格也是同类产品中最具吸引力的.</p> </div> <div class="ratting-author mt-3"> <h6><a href="#tabl-hover-256" class="btn-link"><span class="badge color-1 color-1-bg">查看优惠</span></a></h6> <small class="text-right"><a href="affiliates.html?aff=68114" target="_blank" rel="nofollow noopener" class="btn-link">访问官网 <span class="fas fa-long-arrow-alt-right"></span></a></small> </div>'
+        var div_chold = '<div class="ratting-content"> <h5><img src="assets/img/logo-wide.svg" width="120" alt="logo" class="img-fluid" /></h5> <ul class="list-inline ratting-list mb-2"> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> <li class="list-inline-item"><span class="fas fa-star"></span></li> </ul> <p>IPRoyal是一家久经考验的代理服务提供商，提供一系列代理解决方案，包括住宅、数据中心、4G 移动和运动鞋代理. 其住宅代理解决方案脱颖而出，极具吸引力，其价格也是同类产品中最具吸引力的.</p> </div> <div class="ratting-author mt-3"><h6><a class="btn-link" onclick="copyText()"><span class="badge color-1 color-1-bg">IPR50 | 50%优惠码</span></a></h6><small class="text-right"><a href="affiliates.html?aff=68114" target="_blank" rel="nofollow noopener" class="btn-link">访问官网 <span class="fas fa-long-arrow-alt-right"></span></a></small> </div>'
         var b = document.getElementById('div_2');
         b.innerHTML += div_chold;
 
@@ -962,6 +962,18 @@
                 scrollTop: a
             }, 'slow');
         }
+
+                    // 复制文本的函数
+    function copyText() {
+        var text = "IPR50"; // 这里直接指定要复制的文本
+        var input = document.createElement("input"); // 创建一个临时的input元素
+        document.body.appendChild(input); // 将input添加到body中
+        input.value = text; // 设置input的值为要复制的文本
+        input.select(); // 选中input中的文本
+        document.execCommand("copy"); // 执行复制命令
+        input.remove(); // 复制完成后移除input元素
+        alert("复制成功");
+    }
     </script>
     <!--build:js-->
     <script src="assets/js/vendors/jquery-3.5.1.min.js"></script>

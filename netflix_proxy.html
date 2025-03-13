@@ -230,7 +230,7 @@
                             <div class="card-body py-5">
                                 <div class="post-content ui-sortable">
                                     <p>网飞代理充当用户和网飞服务器之间的中介，允许用户访问其所在地区可能受到限制的内容。通过在不同国家的代理服务器路由互联网流量，用户可以欺骗网飞方面，让他们相信自己是从一个经批准的位置访问该平台的。</p>
-                                    <p>Using a proxy not only expands streaming options but also enhances privacy and security by masking the user's original IP address. With numerous proxy options available, selecting the right one can be daunting. To help users navigate this landscape, we have curated a list of the top 12 proxy sites explicitly tailored for accessing Netflix content.</p>
+                                    <p>使用代理不仅可以扩展流媒体选项，还可以通过隐藏用户的原始 IP 地址来增强隐私和安全性。由于可供选择的代理选项众多，选择合适的代理可能会令人感到困难。为了帮助用户在这一领域中找到方向，我们精心整理了一份专门针对访问 Netflix 内容的 12 个最佳代理网站列表。</p>
                                     <div class="row align-items-center align-cont ui-sortable-handle" id="items-center-222" style="">
                                         <div class="col-md-6 col-lg-6">
                                             <div class="cta-new-wrap">
@@ -835,6 +835,11 @@
                                                     <a href="../affiliates.html?aff=68114" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去IPRoyal官网</a>
                                                 </div>
                                             </div>
+                                            <div class="action-btns mt-4">
+                                                <!-- 隐藏优惠码内容 -->
+                                                <div class="action-btns mt-4" id="discount-code" style="display: none;">IPR50</div>
+                                                <button class="btn btn-danger" id="copy-code-btn">IPR50 | 住宅代理50%优惠</button>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 col-lg-6">
                                             <div class="cta-new-wrap">
@@ -1266,6 +1271,26 @@ $("html,body").animate({
 scrollTop: a
 }, 'slow');
 }
+
+document.getElementById('copy-code-btn').addEventListener('click', function() {
+                                                // 获取隐藏的优惠码内容
+                                                var code = document.getElementById('discount-code').innerText;
+                                        
+                                                // 创建一个临时的输入框用于复制
+                                                var tempInput = document.createElement('input');
+                                                tempInput.value = code;
+                                                document.body.appendChild(tempInput);
+                                        
+                                                // 选中输入框内容并执行复制操作
+                                                tempInput.select();
+                                                document.execCommand('copy');
+                                        
+                                                // 删除临时输入框
+                                                document.body.removeChild(tempInput);
+                                        
+                                                // 可选：提示用户复制成功
+                                                alert('优惠码已复制到剪贴板！');
+                                            });
     </script>
     <!--build:js-->
     <script src="../assets/js/vendors/jquery-3.5.1.min.js"></script>
