@@ -302,13 +302,13 @@
                                                     <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span>支持
                                                         <strong>HTTP(S)、SOCKS5、白名单</strong>
                                                     </li>
-                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>静态住宅代理IP（ISP
-                                                            代理）:</strong> $2.91/代理/月</li>
+                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>ISP代理:</strong> $2.91/代理/月</li>
                                                     <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>IPv4代理IP:</strong> $2.076/代理/月
                                                     </li>
                                                     <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>IPv6代理IP:</strong> $0.12/代理/月
                                                     </li>
                                                     <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>移动代理IP:</strong> 80 美元/代理/月</li>
+                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>住宅代理IP（新）:</strong> 3 美元/GB/月</li>
                                                 </ul>
                                                 <div class="action-btns mt-4">
                                                     <a href="affiliates.html?aff=68113" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去Proxy-seller官网</a>
@@ -881,6 +881,7 @@
                                         <p>Smartproxy 可以被认为是最大的代理提供商之一，可能是仅次于 Bright Data 和 Oxylabs 的第三大代理提供商。轮换代理仍然是其服务的支柱，但现在有更多产品可供选择（如专用代理和网络抓取工具），并计划在未来引入移动和 ISP 代理。
                                             <br>Smartproxy 的主要产品是它的轮换代理网络。您可以选择数据中心或住宅地址。两者都允许您通过网关服务器访问大量 IP。<br> 如果您更喜欢静态且不共享的代理（动态IP 始终共享），Smartproxy 还提供专用数据中心ip。这些 IP 来自美国，享有专用地址的通常优势，即无限流量和并发连接请求。
                                         </p>
+                                        <p style="color: red;">Smartproxy更新了他们家的服务后，现在所有住宅代理均享受5折优惠，点击复制上方我们的优惠码，即可在付款页面享受半价。</p>
                                         <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>什么是数据中心IP？</strong>数据中心IP是由互联网服务提供商（ISP）分配给数据中心或托管服务提供商，并用于服务器或网络设备等专业设备连接到互联网上。推荐阅读：<a href="data_center_and_residential.html">数据中心IP和住宅IP的区别</a>
                                         </li>
                                     </div>
@@ -2770,40 +2771,6 @@
             }, 'slow');
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-    // 获取所有复制按钮
-    const copyButtons = document.querySelectorAll('.copy-button');
-    
-    // 为每个按钮添加点击事件监听器
-    copyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // 获取需要复制的文本
-            const textToCopy = this.getAttribute('data-clipboard-text');
-            
-            // 创建一个临时的输入框
-            const tempInput = document.createElement('textarea');
-            tempInput.value = textToCopy;
-            document.body.appendChild(tempInput);
-            
-            // 选中输入框的内容
-            tempInput.select();
-            tempInput.setSelectionRange(0, tempInput.value.length);
-            
-            // 复制选中的文本到剪贴板
-            try {
-                document.execCommand('copy');
-                // 复制成功后的操作，例如显示提示信息
-                alert('文本已复制到剪贴板！');
-            } catch (err) {
-                console.error('复制失败:', err);
-            }
-            
-            // 移除临时输入框
-            document.body.removeChild(tempInput);
-        });
-    });
-});
-
     </script>
     <!--build:js-->
     <script src="assets/js/vendors/jquery-3.5.1.min.js"></script>
@@ -2818,6 +2785,7 @@
     <script src="assets/js/vendors/magnific-popup.min.js"></script>
     <script src="assets/js/vendors/hs.megamenu.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/copyText.js"></script>
     <!--endbuild-->
 
 
