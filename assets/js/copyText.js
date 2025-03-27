@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 document.execCommand('copy');
                 // 复制成功后的操作，例如显示提示信息
-                alert('文本已复制到剪贴板！');
+                alert('折扣码已复制');
             } catch (err) {
                 console.error('复制失败:', err);
             }

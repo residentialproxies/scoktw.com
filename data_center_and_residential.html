@@ -313,6 +313,10 @@
                                                 <div class="action-btns mt-4">
                                                     <a href="affiliates.html?aff=68113" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去Proxy-seller官网</a>
                                                 </div>
+                                                <!-- 复制按钮和隐藏文本 -->
+<div class="action-btns mt-4">
+    <button class="copy-button btn secondary-solid-btn" data-clipboard-text="YEUDULICH">优惠10% | 点击复制</button>
+</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-6">
@@ -407,6 +411,10 @@
                                                 <div class="action-btns mt-4">
                                                     <a href="affiliates.html?aff=68119" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去Smartproxy官网</a>
                                                 </div>
+                                                <!-- 复制按钮和隐藏文本 -->
+<div class="action-btns mt-4">
+    <button class="copy-button btn secondary-solid-btn" data-clipboard-text="RESI50">住宅优惠50% | 点击复制</button>
+</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-6">
@@ -673,11 +681,10 @@
                                                 <div class="action-btns mt-4">
                                                     <a href="affiliates.html?aff=68114" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去IPRoyal官网</a>
                                                 </div>
-                                            </div>
-                                            <div class="action-btns mt-4">
-                                                <!-- 隐藏优惠码内容 -->
-                                                <div class="action-btns mt-4" id="discount-code" style="display: none;">IPR50</div>
-                                                <button class="btn btn-danger" id="copy-code-btn">IPR50 | 住宅代理50%优惠</button>
+                                                <!-- 复制按钮和隐藏文本 -->
+<div class="action-btns mt-4">
+    <button class="copy-button btn secondary-solid-btn" data-clipboard-text="IPR50">住宅优惠50% | 点击复制</button>
+</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-6">
@@ -2011,26 +2018,6 @@
                 scrollTop: a
             }, 'slow');
         }
-
-        document.getElementById('copy-code-btn').addEventListener('click', function() {
-                                                // 获取隐藏的优惠码内容
-                                                var code = document.getElementById('discount-code').innerText;
-                                        
-                                                // 创建一个临时的输入框用于复制
-                                                var tempInput = document.createElement('input');
-                                                tempInput.value = code;
-                                                document.body.appendChild(tempInput);
-                                        
-                                                // 选中输入框内容并执行复制操作
-                                                tempInput.select();
-                                                document.execCommand('copy');
-                                        
-                                                // 删除临时输入框
-                                                document.body.removeChild(tempInput);
-                                        
-                                                // 可选：提示用户复制成功
-                                                alert('优惠码已复制到剪贴板！');
-                                            });
     </script>
     <!--build:js-->
     <script src="assets/js/vendors/jquery-3.5.1.min.js"></script>
@@ -2045,6 +2032,7 @@
     <script src="assets/js/vendors/magnific-popup.min.js"></script>
     <script src="assets/js/vendors/hs.megamenu.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/copyText.js"></script>
     <!--endbuild-->
 
 
