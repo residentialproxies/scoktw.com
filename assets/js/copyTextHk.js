@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 获取所有复制按钮
     const copyButtons = document.querySelectorAll('.copy-button');
     
-    // 为每个按钮添加点击事件监听器
+    // 为每个按钮添加点击监听器
     copyButtons.forEach(button => {
         button.addEventListener('click', function(event) {
             // 获取需要复制的文本
