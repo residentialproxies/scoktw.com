@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--title-->
+    <title>什麼是代理IP,如何使用代理IP?</title>
+
+    <!-- SEO Meta description -->
+    <meta name="description" content="代理IP是一種通過服務器中轉數據流量的技術，它讓用戶的真實IP地址得以隱藏，替換成代理服務器的IP地址。當用戶向其他網站髮送網絡請求時，這些請求會經過代理服務器，再由代理服務器去和目標網站通信，從而隱藏了真實IP地址信息。">
+    <meta name="keywords" content="代理IP,動態代理IP,住宅代理IP，靜態代理IP">
+    <meta name="author" content="ThemeTags">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="什麼是代理IP,如何使用代理IP?" />
+    <!-- website name -->
+    <meta property="og:site" content="https://scoktw.com/" />
+    <!-- website link -->
+    <meta property="og:title" content="9家全球最佳靜態住宅代理（ISP代理）" />
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="代理IP是一種通過服務器中轉數據流量的技術，它讓用戶的真實IP地址得以隱藏，替換成代理服務器的IP地址。當用戶向其他網站髮送網絡請求時，這些請求會經過代理服務器，再由代理服務器去和目標網站通信，從而隱藏了真實IP地址信息。" />
+
+    <!-- image link, make sure it''s jpg -->
+    <meta property="og:url" content="https://scoktw.com/what_is_a_proxy_ip.html" />
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+
+    <!--favicon icon-->
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/png" sizes="16x16">
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!--build:css-->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "什麼是動態代理IP？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>動態代理IP是指在使用代理時，代理服務器會定期更換IP地址，使得使用動態代理的客戶端可以自動切換IP地址並規避被封鎖和檢測的風險。這種類型的代理IP相對於靜態代理IP來説更難被目標網站識別和封鎖，因爲代理服務器會不斷更換IP地址，從而保証了代理IP的有效性和穩定性。動態代理IP通常適用於需要大量的IP地址進行爬蟲、數據採集、蒐索引擎優化、匿名訪問等場景。</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "什麼是靜態代理IP？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>靜態代理IP是指在使用代理時，代理服務器提供的IP地址是固定不變的。使用靜態代理IP的客戶端每次連接代理服務器時都會使用相同的IP地址<br> 這種類型的代理相對於動態代理IP來説更容易被目標網站識別和封鎖，因爲代理服務器提供的IP地址是靜態的，易受到目標網站的檢測和限製。使用靜態代理IP通常適用於一些對代理IP穩定性要求不高、訪問頻率較低的場景。</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "什麼是住宅代理IP？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>住宅代理IP是指使用普通家庭住宅網絡（如電信、聯通、移動等）提供的IP地址作爲代理服務器，提供給其他客戶端進行訪問。這種類型的代理常常被用於一些需要模擬真實用戶訪問行爲的場景中，因爲住宅代理IP更容易獲得目標網站的信任，從而避免被識別和封鎖。相對於數據中心代理IP來説，住宅代理IP的穩定性和可靠性要差一些，同時由於使用者較多，帶寬和速度也會受到影響。</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "什麼是數據中心代理IP？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "數據中心代理IP是指由數據中心或托管服務提供商（如亞馬遜、谷歌、阿裡雲、騰訊雲、百度智能雲等）提供的IP地址作爲代理服務器，提供給其他客戶端進行訪問。這種類型的代理常常被用於一些需要大規模爬取數據的場景中，因爲數據中心代理IP穩定性高，速度快，帶寬資源充足。相對於住宅代理IP來説，數據中心代理IP更容易被目標網站識別和封鎖，但也由於使用者較少，所以相對來説更加穩定和可靠。"
+                }
+            }, {
+                "@type": "Question",
+                "name": "什麼是移動代理IP？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "移動代理IP是由移動運營商提供的IP地址，通常是通過手機或者其他移動設備（如4G路由器）所分配的動態IP。使用移動代理IP可以模擬移動端的真實身份進行訪問，因爲移動端與PC端相比，擁有不同的操作繫統、瀏覽器和網絡環境等特徵，所以在一些需要模擬移動端進行數據爬取或測試的場合中非常有用。"
+                }
+            }]
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <!--header section start-->
+    <header id="header" class="header-main headroom">
+
+        <!--main header menu start-->
+        <div id="logoAndNav" class="main-header-menu-wrap bg-transparent">
+            <div class="container">
+                <nav class="js-mega-menu navbar navbar-expand-md header-nav">
+
+                    <!--logo start-->
+                    <a class="navbar-brand" href="index.html"><img src="../assets/img/logo-white.png" width="120" alt="logo" class="img-fluid" /></a>
+                    <!--logo end-->
+
+                    <!--responsive toggle button start-->
+                    <button type="button" class="navbar-toggler btn" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                        <span id="hamburgerTrigger">
+                            <span class="fas fa-bars"></span>
+                        </span>
+                    </button>
+                    <!--responsive toggle button end-->
+
+                    <!--main menu start-->
+                    <div id="div_1"></div>
+                    <!--main menu start-->
+                    <div id="navBar" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto main-navbar-nav">
+                            <!--home end-->
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="index.html" aria-haspopup="true" aria-expanded="false">全球靜態住宅代理IP商列表</a>
+                                <!--services mega menu start-->
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">全球靜態住宅代理IP商列表（按地區分類）</span>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shared-hosting.html" title="美國代理IP" rel="bookmark">美國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_china.html" title="中國代理IP" rel="bookmark">中國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_europe.html" title="歐洲代理IP" rel="bookmark">歐洲代理IP <span
+                                                                class="badge badge-danger ml-2">Hot</span></a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_taiwan.html" title="颱灣代理ip" rel="bookmark">颱灣代理ip</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_hongkong.html" title="香港代理IP" rel="bookmark">香港代理IP</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_germany.html" title="德國代理IP" rel="bookmark">德國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_uk.html" title="英國代理IP" rel="bookmark">英國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_france.html" title="法國代理IP" rel="bookmark">法國代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_korea.html" title="韓國代理ip" rel="bookmark">韓國代理ip</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_jpan.html" title="日本代理IP" rel="bookmark">日本代理IP <span
+                                                                class="badge badge-danger ml-2">Hot</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_eussia.html" title="俄羅斯代理IP" rel="bookmark">俄羅斯代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="spain_static_residential_agents.html" title="西班牙ISP代理" rel="bookmark">西班牙ISP代理</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="australia_static_residential_agents.html" title="澳大利亞靜態代理IP" rel="bookmark">澳大利亞靜態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_brazil.html" title="巴西IP代理" rel="bookmark">巴西IP代理</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_vietnam.html" title="越南代理IP" rel="bookmark">越南代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mega Menu Banner -->
+                                    <div class="secondary-bg">
+                                        <div class="u-header__product-banner-content position-relative z-index text-center text-white">
+                                            <div class="mb-4">
+                                                <h5 class="text-white">精選全球排名靠前的12家IP代理商！</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Mega Menu Banner -->
+                                </div>
+                                <!--services mega menu end-->
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="800px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">代理IP商列表(按類型)</a>
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 800px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">精選全球代理IP商（按類型）</span>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_residential_proxy_ip.html" title="最佳靜態住宅代理IP" rel="bookmark">最佳靜態住宅代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="data_center_proxy_ip.html" title="最佳數據中心代理IP" rel="bookmark">最佳數據中心代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="online_shopping.html" title="最佳電商網購代理IP" rel="bookmark">最佳電商網購代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="rotate_proxy_ip.html" title="最佳動態代理IP" rel="bookmark">最佳動態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="best_exclusive_ipv4_proxy.html" title="最佳獨享IPv4代理" rel="bookmark">最佳獨享IPv4代理</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="best_exclusive_socks5_proxy.html" title="最佳socks5代理IP" rel="bookmark">最佳socks5代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="tiktok_static_proxy_ip.html" title="TikTok靜態代理IP" rel="bookmark">TikTok靜態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="Instagram_static_proxy_ip.html" title="Instagram 靜態代理IP" rel="bookmark">Instagram 靜態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="line_static_proxy_ip.html" title="批量登錄Line賬號靜態代理" rel="bookmark">Line 靜態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="facebook_static_proxy_ip.html" title="Facebook 靜態代理IP" rel="bookmark">Facebook 靜態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="whatsapp_static_proxy_ip.html" title="WhatsApp 靜態代理IP" rel="bookmark">WhatsApp 靜態代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="article_list.html" title="最佳代理IP測評博客" rel="bookmark"><span class="badge badge-primary ml-1">列表</span> 最佳代理IP測評博客</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="article_list_2.html" title="什麼是代理IP?" rel="bookmark"><span class="badge badge-primary ml-1">列表</span> 什麼是代理IP?</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="article_list_3.html" title="如何使用代理IP?" rel="bookmark"><span class="badge badge-primary ml-1">列表</span> 如何使用代理IP?</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="cheap_static_proxy.html" title="便宜的靜態代理IP" rel="bookmark">便宜的靜態代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="monthly_payment_for_long-term_proxy_ip.html" title="11+月付長效靜態代理IP" rel="bookmark">11+月付長效靜態代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">代理IP商測評列表</a>
+                                <!--services mega menu start-->
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">代理IP商測評列表</span>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="iproyal_proxy_ip.html" title="IPRoyal測評總結" rel="bookmark">IPRoyal測評總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shifter_proxy_ip.html" title="Shifter測評總結" rel="bookmark">Shifter測評總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="decodo_proxy_ip.html" title="Decodo測評總結" rel="bookmark">Decodo測評總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="thordata_proxy_ip.html" title="thordata代理測試總結" rel="bookmark">Thordata代理測試總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="toolip_proxy_ip.html" title="toolip代理測試總結" rel="bookmark">Toolip代理測試總結</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_seller_ip.html" title="Proxy-seller測評總結" rel="bookmark">Proxy-seller測評總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_cheap_proxy_ip.html" title="Proxy Cheap速度、性能測試" rel="bookmark">Proxy Cheap速度、性能測試</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="bright_data_proxy_ip.html" title="Bright data測評總結" rel="bookmark">Bright Data測試總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="soax_proxy_ip.html" title="SOAX測評總結" rel="bookmark">SOAX測試總結</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxyempire_proxy_ip.html" title="proxyempire測評總結" rel="bookmark">Proxyempire測試總結</a></li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!--services mega menu end-->
+                            <li class="nav-item header-nav-last-item d-flex align-items-center">
+                                <a href="article_list.html" class="btn outline-white-btn animated-btn">文章列表</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--main menu end-->
+                </nav>
+            </div>
+        </div>
+        <!--main header menu end-->
+    </header>
+    <!--header section end-->
+    <!--header section end-->
+
+    <div class="main">
+
+        <!--hero section start-->
+        <section class="hero-equaubs hero-equal-height section-xl section-header text-white flex-column d-flex justify-content-center" style="background: url(../assets/img/bg-01.jpg)no-repeat center center / cover;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-9 col-lg-8">
+                        <div class="hero-content-left text-white text-center">
+                            <h1 class="text-white">什麼是代理IP,如何使用代理IP?</h1>
+                            <p class="lead">代理IP是一種通過服務器中轉數據流量的技術，它讓用戶的真實IP地址得以隱藏，替換成代理服務器的IP地址。
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-us-promo promo-top pt-100 mt--165">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-6">
+                        <div class="card single-promo-card single-promo-hover shadow-sm">
+                            <div class="card-body py-5">
+                                <div class="post-content">
+                                    <p>代理IP是一種通過服務器中轉數據流量的技術，它讓用戶的真實IP地址得以隱藏，替換成代理服務器的IP地址。當用戶向其他網站髮送網絡請求時，這些請求會經過代理服務器，再由代理服務器去和目標網站通信，從而隱藏了真實IP地址信息。
+                                    </p>
+                                    <p>代理IP可以分爲動態代理IP和靜態代理IP兩種：</p>
+                                    <p><b>動態代理IP：</b>指根據提供商的設定，在一定時間內更換多個不同的IP地址。</p>
+                                    <p><b>靜態代理IP：</b>指由提供商在特定位置擁有的一組IP地址，所有代理請求都會被轉髮到這個服務器上，保持固定的IP地址。</p>
+                                    <p>代理IP具有許多用途，例如隱私保護、反爬蟲、跨境電商等，但使用代理IP也需要注意其合法性，遵循相關規定。</p>
+                                    <h2 class="post-title" id="items-center-155">代理IP的獲取形式</h2>
+                                    <blockquote class="blockquote">
+                                        <p>代理IP通常由IP地址、端口、賬號和密碼組成。其中，IP地址是被代理的服務器的地址，端口是網絡應用程序之間傳輸數據時所使用的數字標識符，賬號和密碼是訪問該代理服務器時需要提供的身份驗証信息。<br>通過使用代理IP，用戶可以隱藏自己的真實IP地址，以保護自己的隱私和安全。同時，代理IP還可以幫助用戶突破地域限製，訪問被封鎖的網站和內容。</p>
+                                        <table class="table w-100 table-hover table-bordered comparision-table text-center">
+                                            <tbody>
+                                                <tr>
+                                                    <th>IP地址</th>
+                                                    <th>端口</th>
+                                                    <th>賬號</th>
+                                                    <th>密碼</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>127.0.0.1</strong></td>
+                                                    <td>0/65536</td>
+                                                    <td>username</td>
+                                                    <td>password</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><b>還有一種形式，通過IP白名單，無需用戶+密碼即可訪問</b></p>
+                                        <footer class="blockquote-footer">代理IP的獲取形式</footer>
+                                    </blockquote>
+
+                                    <h2 class="post-title" id="items-center-156">代理IP由哪些類型？</h2>
+                                    <p>代理IP類型繁多，不同類型的代理IP適用於不同的場景，選擇合適的代理IP類型可以提高訪問速度和穩定性。</p>
+                                    <p id="items-center-157" style="font-size: 1.125rem;color: #0d1536;font-weight: 700;">代理ip按照請求協議分類：</p>
+                                    <p><b>1、HTTP代理：</b>HTTP代理是最常見的代理類型之一，它隻支持HTTP協議，適用於訪問網頁、髮送郵件等操作。</p>
+                                    <p><b>2、HTTPS代理：</b>HTTPS代理是支持HTTPS協議的代理類型，相對於HTTP代理更安全，適用於需要加密傳輸數據的場景。</p>
+                                    <p><b>3、SOCKS代理：</b>SOCKS代理是一種比較通用的代理類型，它支持TCP/UDP以及各種應用層協議，並且不僅限於HTTP和HTTPS協議。相對於HTTP和HTTPS代理，SOCKS代理速度更快，但使用起來相對複雜。</p>
+                                    <p><b>4、FTP代理：</b>FTP代理是一種專門用於文件傳輸協議的代理類型，適用於上傳、下載文件等操作。</p>
+                                    <p><b>5、隧道代理：</b>隧道代理是在網絡層進行的代理，它通過在運行在兩端的代理服務器之間建立虛擬通道，將被代理的數據包封裝後進行傳輸。隧道代理通常用於繞過防火牆等封鎖措施。</p>
+                                    <p id="items-center-158" style="font-size: 1.125rem;color: #0d1536;font-weight: 700;">代理ip按照匿名性方式分類：</p>
+                                    <p><b>1、透明代理：</b>透明代理不會修改客戶端請求的任何內容，客戶端也不需要進行任何特殊配置就能夠使用。但是透明代理無法隱藏客戶端的真實IP地址，易被檢測和封鎖。</p>
+                                    <p><b>2、匿名代理：</b>匿名代理會隱藏客戶端的真實IP地址，但是不會修改客戶端的請求。客戶端可以通過一些特殊的手段來髮現使用了匿名代理。</p>
+                                    <p><b>3、高匿代理：</b>高匿代理也會隱藏客戶端的真實IP地址，並且還會偽裝客戶端的請求頭等信息，使得客戶端更難以被識別和追踪。相對於透明代理和匿名代理，高匿代理的安全性更高、穩定性更好，但是價格也相對較高。</p>
+                                    <img src="../assets/img/hands-g0c7bd06b1_1920.jpg" alt="hosting" style="display: block; margin: auto;max-width: 80%;" class="img-fluid">
+                                    <p id="items-center-159" style="font-size: 1.125rem;color: #0d1536;font-weight: 700;">代理ip按照商用分配分類：</p>
+                                    <p><b>動態代理IP</b></p>
+                                    <p>動態代理IP是指在使用代理時，代理服務器會定期更換IP地址，使得使用動態代理的客戶端可以自動切換IP地址並規避被封鎖和檢測的風險。<br>這種類型的代理IP相對於靜態代理IP來説更難被目標網站識別和封鎖，因爲代理服務器會不斷更換IP地址，從而保証了代理IP的有效性和穩定性。動態代理IP通常適用於需要大量的IP地址進行爬蟲、數據採集、蒐索引擎優化、匿名訪問等場景。</p>
+                                    <table class="table w-100 table-hover table-bordered comparision-table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>名稱</th>
+                                                <th>別名</th>
+                                                <th>英文名</th>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>動態代理IP</strong></td>
+                                                <td>旋轉代理IP、輪換代理</td>
+                                                <td>Rotating proxies IP</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p><b>靜態代理IP</b></p>
+                                    <p>靜態代理IP是指在使用代理時，代理服務器提供的IP地址是固定不變的。使用靜態代理IP的客戶端每次連接代理服務器時都會使用相同的IP地址<br>這種類型的代理相對於動態代理IP來説更容易被目標網站識別和封鎖，因爲代理服務器提供的IP地址是靜態的，易受到目標網站的檢測和限製。使用靜態代理IP通常適用於一些對代理IP穩定性要求不高、訪問頻率較低的場景。</p>
+                                    <table class="table w-100 table-hover table-bordered comparision-table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>名稱</th>
+                                                <th>別名</th>
+                                                <th>英文名</th>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>靜態代理IP</strong></td>
+                                                <td>長效代理</td>
+                                                <td>Static Proxies IP</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p><b>住宅代理IP</b></p>
+                                    <p>住宅代理IP是指使用普通家庭住宅網絡（如電信、聯通、移動等）提供的IP地址作爲代理服務器，提供給其他客戶端進行訪問。<br>這種類型的代理常常被用於一些需要模擬真實用戶訪問行爲的場景中，因爲住宅代理IP更容易獲得目標網站的信任，從而避免被識別和封鎖。相對於數據中心代理IP來説，住宅代理IP的穩定性和可靠性要差一些，同時由於使用者較多，帶寬和速度也會受到影響。</p>
+                                    <table class="table w-100 table-hover table-bordered comparision-table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>名稱</th>
+                                                <th>別名</th>
+                                                <th>英文名</th>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>住宅代理IP</strong></td>
+                                                <td>住宅代理IP</td>
+                                                <td>Residential Proxy IP</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p><b>數據中心代理IP</b></p>
+                                    <p>數據中心代理IP是指由數據中心或托管服務提供商（如亞馬遜、谷歌、阿裡雲、騰訊雲、百度智能雲等）提供的IP地址作爲代理服務器，提供給其他客戶端進行訪問。<br>這種類型的代理常常被用於一些需要大規模爬取數據的場景中，因爲數據中心代理IP穩定性高，速度快，帶寬資源充足。相對於住宅代理IP來説，數據中心代理IP更容易被目標網站識別和封鎖，但也由於使用者較少，所以相對來説更加穩定和可靠。</p>
+                                    <table class="table w-100 table-hover table-bordered comparision-table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>名稱</th>
+                                                <th>別名</th>
+                                                <th>英文名</th>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>數據中心代理IP</strong></td>
+                                                <td>數據中心代理IP</td>
+                                                <td>Datacenter proxies</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <img src="../assets/img/electrical-g123073914_1920.jpg" alt="hosting" style="display: block; margin: auto;max-width: 80%;" class="img-fluid">
+
+                                    <p><b>移動代理IP</b></p>
+                                    <p>移動代理IP是由移動運營商提供的IP地址，通常是通過手機或者其他移動設備（如4G路由器）所分配的動態IP。<br>使用移動代理IP可以模擬移動端的真實身份進行訪問，因爲移動端與PC端相比，擁有不同的操作繫統、瀏覽器和網絡環境等特徵，所以在一些需要模擬移動端進行數據爬取或測試的場合中非常有用。但是由於移動代理IP的實時性較差，易受到運營商的幹擾和限製，所以相對住宅代理IP和數據中心代理IP來説更加不穩定。此外，由於移動代理IP被大量使用，所以也容易被目標網站檢測出來並封鎖。</p>
+                                    <table class="table w-100 table-hover table-bordered comparision-table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <th>名稱</th>
+                                                <th>別名</th>
+                                                <th>英文名</th>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>移動代理IP</strong></td>
+                                                <td>4G代理IP</td>
+                                                <td>Mobile proxies</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2 id="items-center-160" class="post-title">代理IP的應用場景</h2>
+                                    <p><b>動態代理IP應用場景</b></p>
+                                    <p>動態代理IP相對於靜態代理IP來説更難被目標網站識別和封鎖，因爲代理服務器會不斷更換IP地址，從而保証了代理IP的有效性和穩定性。動態代理IP通常適用於需要大量的IP地址進行爬蟲、數據採集、蒐索引擎優化、匿名訪問等場景。</p>
+                                    <p><b>適用場景：</b>爬蟲代理，郵件群髮，seo優化，提昇廣告流量</p>
+                                    <p><b>缺點：</b>無法長期使用，價格偏貴，易被封鎖</p>
+                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>什麼是爬蟲代理IP？</strong>爬蟲代理是指在爬取網站數據時使用的代理服務器。它可以幫助我們隱藏真實的IP地址，避免被封禁或限製訪問頻率。同時，爬蟲代理還可以通過更換不同的IP地址來繞過一些反爬蟲機製，從而有效地提高爬取數據的效率和成功率。推薦閱讀：<a href="python3_crawler_tutorial_agent.html">Python3爬蟲代理IP的使用方法</a>
+                                    </li>
+                                    <p id="items-center-161"><br></p>
+                                    <p><b>靜態代理IP應用場景</b></p>
+                                    <p>靜態代理IP相對於動態代理IP來説更容易被目標網站識別和封鎖，因爲代理服務器提供的IP地址是靜態的，易受到目標網站的檢測和限製。使用靜態代理IP通常適用於一些對代理IP穩定性要求不高、訪問頻率較低的場景。</p>
+                                    <p><b>適用場景：</b>社交媒體賬號使用，ads廣告投放，運營自媒體賬戶</p>
+                                    <p><b>缺點：</b>易被封鎖，限速</p>
+                                    <p id="items-center-162"><br></p>
+                                    <p><b>住宅代理IP應用場景</b></p>
+                                    <p>住宅代理IP常常被用於一些需要模擬真實用戶訪問行爲的場景中，因爲住宅代理IP更容易獲得目標網站的信任，從而避免被識別和封鎖。相對於數據中心代理IP來説，住宅代理IP的穩定性和可靠性要差一些，同時由於使用者較多，帶寬和速度也會受到影響。</p>
+                                    <p><b>適用場景：</b>社交媒體賬號運營，運營自媒體賬戶，電商購物</p>
+                                    <p><b>缺點：</b>限速</p>
+                                    <p id="items-center-163"><br></p>
+                                    <p><b>數據中心代理IP</b></p>
+                                    <p>數據中心代理IP常常被用於一些需要大規模爬取數據的場景中，因爲數據中心代理IP穩定性高，速度快，帶寬資源充足。相對於住宅代理IP來説，數據中心代理IP更容易被目標網站識別和封鎖，但也由於使用者較少，所以相對來説更加穩定和可靠。</p>
+                                    <p><b>適用場景：</b>社交媒體app登錄，APP測試，髮帖髮文章，手遊掛機，電商購物</p>
+                                    <p><b>缺點：</b>易被封鎖</p>
+                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>什麼是數據中心IP？</strong>數據中心IP是由互聯網服務提供商（ISP）分配給數據中心或托管服務提供商，並用於服務器或網絡設備等專業設備連接到互聯網上。推薦閱讀：<a href="data_center_and_residential.html">數據中心IP和住宅IP的區別</a>
+                                    </li>
+                                    <p id="items-center-164"><br></p>
+                                    <p><b>移動代理IP應用場景</b></p>
+                                    <p>需要模擬移動端進行數據爬取或測試的場合中非常有用。但是由於移動代理IP的實時性較差，易受到運營商的幹擾和限製，所以相對住宅代理IP和數據中心代理IP來説更加不穩定。此外，由於移動代理IP被大量使用，所以也容易被目標網站檢測出來並封鎖。</p>
+                                    <p><b>適用場景：</b>社交媒體app登錄，APP測試，髮帖髮文章，手遊掛機，電商購物</p>
+                                    <p><b>缺點：</b>按照流量計費，價格較貴</p>
+
+                                    <div id="items-center-165" class="section-heading mb-5">
+                                        <h2 class="post-title">總結</h2>
+                                        <p>代理IP是一種中間實體，用於在客戶端和服務器之間轉送網絡信息。使用代理IP的設備或軟件不直接和目標服務器通信，而是將請求髮送給代理服務器，由代理服務器轉髮請求並獲取響應數據，然後再將響應數據傳輸回請求方，從而達到保護隱私、防火牆穿透、反爬蟲等目的的作用。
+                                        </p>
+                                        <p>代理IP可分爲HTTP代理、HTTPS代理、SOCKS代理、匿名代理、透明代理、高匿代理等多種類型，應用場景也非常廣泛，如數據採集、網絡安全測試、地理位置定向廣告投放、網絡營銷等。同時，代理IP的質量也有很大區別，高質量的代理IP可以提高抓取成功率、保護隱私安全等方麵的效果，而低質量的代理IP則可能會浪費時間、資金和帶來更多問題。</p>
+                                    </div>
+                                    <div class="post-footer">
+                                        <div class="post-tags"><a href="https://scoktw.com/what_is_a_proxy_ip.html" title="動態代理IP">動態代理IP</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="靜態代理IP">靜態代理IP</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="數據中心代理IP">數據中心代理IP</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="住宅代理IP">住宅代理IP</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="移動代理IP">移動代理IP</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="透明代理">透明代理</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="匿名代理">匿名代理</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="高匿代理">高匿代理</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="HTTP代理">HTTP代理</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="HTTPS代理">HTTPS代理</a>
+                                            <a href="https://scoktw.com/what_is_a_proxy_ip.html" title="SOCKS代理">SOCKS代理</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--hero section end-->
+
+        <div id="faq" class="ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div id="accordion-one" class="accordion accordion-faq">
+                            <h2>相關閱讀</h2>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="card single-promo-card single-promo-hover text-center shadow-sm">
+                                        <div class="card-body py-5">
+                                            <a href="proxy_ip_europe.html">
+                                                <div class="pb-2">
+                                                    <img src="../assets/img/iproyal_1580.png" width="320" class="img-fluid">
+                                                </div>
+                                                <div>
+                                                    <h5 class="mb-0">歐洲靜態住宅代理IP</h5>
+                                                    <p class="text-muted mb-0" style="font-size: 0.9rem;">歐洲代理IP表現最佳的地區就是英國，德國，法國，西班牙，意大利，荷蘭，這裡推薦最常用的代理平颱！可以用於一些大型互聯網爬取數據，軟件開髮，數據攫取當然少不了會使用到歐洲靜態住宅代理IP！</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="card single-promo-card single-promo-hover text-center shadow-sm">
+                                        <div class="card-body py-5">
+                                            <a href="proxy_ip_germany.html">
+                                                <div class="pb-2">
+                                                    <img src="../assets/img/iproyal_1520.png" width="320" class="img-fluid">
+                                                </div>
+                                                <div>
+                                                    <h5 class="mb-0">德國靜態住宅代理IP</h5>
+                                                    <p class="text-muted mb-0" style="font-size: 0.9rem;">本篇文章主要介紹德國靜態住宅代理IP，如果你從事歐美外貿生意，可能會用到它，Alibaba，SWAROVSKI，eBay都在德國互聯網購物佔有很大份額，數據攫取當然少不了會使用到德國靜態住宅代理IP！</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="card single-promo-card single-promo-hover text-center shadow-sm">
+                                        <div class="card-body py-5">
+                                            <a href="proxy_ip_uk.html">
+                                                <div class="pb-2">
+                                                    <img src="../assets/img/iproyal_1530.png" width="320" class="img-fluid">
+                                                </div>
+                                                <div>
+                                                    <h5 class="mb-0">最佳英國靜態住宅代理（英國ISP代理）</h5>
+                                                    <p class="text-muted mb-0" style="font-size: 0.9rem;">英國住宅代理IP是提供給英國計算機或移動設備的代理IP地址，用於在線訪問英國網絡。英國互聯網服務提供商隻能向英國居民提供這些代理IP地址，他比數據中心IP 地址更貴。</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--faq section start-->
+        <div id="faq" class="ptb-100 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div id="accordion-one" class="accordion accordion-faq">
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                                    <h6 class="mb-0 d-inline-block">什麼是動態代理IP？
+                                    </h6>
+                                </a>
+                                <div id="collapseOne" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>動態代理IP是指在使用代理時，代理服務器會定期更換IP地址，使得使用動態代理的客戶端可以自動切換IP地址並規避被封鎖和檢測的風險。這種類型的代理IP相對於靜態代理IP來説更難被目標網站識別和封鎖，因爲代理服務器會不斷更換IP地址，從而保証了代理IP的有效性和穩定性。動態代理IP通常適用於需要大量的IP地址進行爬蟲、數據採集、蒐索引擎優化、匿名訪問等場景。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseTwo">
+                                    <h6 class="mb-0 d-inline-block">什麼是靜態代理IP？</h6>
+                                </a>
+                                <div id="collapseTwo" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>靜態代理IP是指在使用代理時，代理服務器提供的IP地址是固定不變的。使用靜態代理IP的客戶端每次連接代理服務器時都會使用相同的IP地址<br> 這種類型的代理相對於動態代理IP來説更容易被目標網站識別和封鎖，因爲代理服務器提供的IP地址是靜態的，易受到目標網站的檢測和限製。使用靜態代理IP通常適用於一些對代理IP穩定性要求不高、訪問頻率較低的場景。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseThree">
+                                    <h6 class="mb-0 d-inline-block">什麼是住宅代理IP？
+                                    </h6>
+                                </a>
+                                <div id="collapseThree" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>住宅代理IP是指使用普通家庭住宅網絡（如電信、聯通、移動等）提供的IP地址作爲代理服務器，提供給其他客戶端進行訪問。這種類型的代理常常被用於一些需要模擬真實用戶訪問行爲的場景中，因爲住宅代理IP更容易獲得目標網站的信任，從而避免被識別和封鎖。相對於數據中心代理IP來説，住宅代理IP的穩定性和可靠性要差一些，同時由於使用者較多，帶寬和速度也會受到影響。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseFour">
+                                    <h6 class="mb-0 d-inline-block">什麼是數據中心代理IP？
+                                    </h6>
+                                </a>
+                                <div id="collapseFour" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>數據中心代理IP是指由數據中心或托管服務提供商（如亞馬遜、谷歌、阿裡雲、騰訊雲、百度智能雲等）提供的IP地址作爲代理服務器，提供給其他客戶端進行訪問。這種類型的代理常常被用於一些需要大規模爬取數據的場景中，因爲數據中心代理IP穩定性高，速度快，帶寬資源充足。相對於住宅代理IP來説，數據中心代理IP更容易被目標網站識別和封鎖，但也由於使用者較少，所以相對來説更加穩定和可靠。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-0">
+                                <a class="card-header collapsed" data-toggle="collapse" href="#collapseFour3">
+                                    <h6 class="mb-0 d-inline-block">什麼是移動代理IP？
+                                    </h6>
+                                </a>
+                                <div id="collapseFour3" class="collapse" data-parent="#accordion-one">
+                                    <div class="card-body">
+                                        <p>移動代理IP是由移動運營商提供的IP地址，通常是通過手機或者其他移動設備（如4G路由器）所分配的動態IP。使用移動代理IP可以模擬移動端的真實身份進行訪問，因爲移動端與PC端相比，擁有不同的操作繫統、瀏覽器和網絡環境等特徵，所以在一些需要模擬移動端進行數據爬取或測試的場合中非常有用。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--faq section end-->
+
+    </div>
+
+    <!--footer section start-->
+    <footer class="footer-section">
+        <!--footer top start-->
+        <div class="footer-top gradient-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row footer-top-wrap">
+                            <div class="col-12">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">讚助商</h4>
+                                    <ul class="list-inline security-icon-list">
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=1111" target="_blank" rel="nofollow noopener"><img src="../assets/img/bright-data-logo.jpg" width="110" alt="security" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=2222" target="_blank" rel="nofollow noopener"><img src="../assets/img/soax-logo.jpg" width="110" alt="security" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=3333" target="_blank" rel="nofollow noopener"><img src="../assets/img/proxy-seller-logo.jpg" width="110" alt="security" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=68114" target="_blank" rel="nofollow noopener"><img src="../assets/img/iproyal logo.jpg" width="110" alt="security" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=5555" target="_blank" rel="nofollow noopener"><img src="../assets/img/decodo logo.jpg" width="110" alt="security" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=6666" target="_blank" rel="nofollow noopener"><img src="../assets/img/proxy ipv4 logo.jpg" width="110" alt="security" class="img-fluid"></a>
+                                        </li>
+                                    </ul>
+                                    <p><a class="nav-link" href="dai.html" target="_blank" rel="nofollow noopener" style="color: #ffffff; font-weight: 800;">商家合作？無法付款？找我</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row footer-top-wrap">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">博客</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/shared-hosting.html">最佳美國代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_china.html">最佳中國代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_europe.html">最佳歐洲代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_taiwan.html">最佳颱灣代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_uk.html">最佳英國代理IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">熱門博客</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/what_is_a_proxy_ip.html">什麼是代理IP?</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/fingerprint_browser.html">26款指紋瀏覽器</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/static_ip.html">靜態IP和動態IP的區別</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/data_center_and_residential.html">數據中心IP和住宅IP的區別</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/between_socks5_proxy_and_https_proxy.html">比較Socks5代理和https代理的區別！</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">代理分類</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/static_residential_proxy_ip.html">最佳靜態住宅代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/data_center_proxy_ip.html">最佳數據中心代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/rotate_proxy_ip.html">最佳動態代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/best_exclusive_ipv4_proxy.html">最佳獨享IPv4代理</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/best_exclusive_socks5_proxy.html">最佳socks5代理IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer top end-->
+        <div class="row align-items-center justify-content-between scroll-us-top scroll-us-to-target">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="card popular-price text-center single-pricing-pack">
+                    <div class="pt-5">
+                        <h5 class="mb-0">目錄 <u class="res_u">共11家</u></h5>
+                    </div>
+                    <div class="single-partner-wrap card-bottom-line white-bg shadow-sm rounded text-center p-2 mt-4">
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-155')" class="view-details-link">代理IP的獲取形式 🔥🔥🔥</a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-156')" class="view-details-link">代理IP由哪些類型？<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-157')" class="view-details-link">請求協議分類<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-158')" class="view-details-link">匿名性方式分類<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-159')" class="view-details-link">商用分配分類<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-160')" class="view-details-link">動態代理IP應用場景</a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-161')" class="view-details-link">靜態代理IP應用場景</a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-162')" class="view-details-link">住宅代理IP應用場景</a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-163')" class="view-details-link">數據中心代理IP</a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-164')" class="view-details-link">移動代理IP應用場景</a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-165')" class="view-details-link">總結<span class="ti-angle-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer copyright start-->
+        <div class="footer-bottom gray-light-bg py-3">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-md-5 col-lg-5">
+                        <p class="copyright-text pb-0 mb-0">Copyrights © 2025. All rights reserved by
+                            <a href="https://scoktw.com" target="_blank">代理IP</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--footer copyright end-->
+    </footer>
+    <!--footer section end-->
+    <!--bottom to top button start-->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <span class="ti-rocket"></span>
+    </button>
+    <!--bottom to top button end-->
+    <script type="text/javascript">
+        var div_child = '<ul class="navbar-nav ml-auto main-navbar-nav"> <li class="nav-item hs-has-sub-menu custom-nav-item"> <a id="pagesMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="/index.html" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"><img src="../assets/img/svg/cn.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">中文</a> <ul id="pagesSubMenu" class="hs-sub-menu main-sub-menu animated" aria-labelledby="pagesMegaMenu" style="min-width: 160px; display: none;"> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="hk/index.html"> <img src="../assets/img/svg/hk.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">繁體</a> </li><li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="us/index.html"> <img src="../assets/img/svg/us.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">English</a> </li> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="https://scoktw.com/ru/index.html"> <img src="../assets/img/svg/ru.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">Русский</a> </li> </ul> </li> </ul>'
+        var c = document.getElementById('div_1');
+        c.innerHTML += div_child;
+
+        function goDiv(div) {
+            var a = $("#" + div).offset().top;
+            $("html,body").animate({
+                scrollTop: a
+            }, 'slow');
+        }
+    </script>
+    <!--build:js-->
+    <script src="../assets/js/vendors/jquery-3.5.1.min.js"></script>
+    <script src="../assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/vendors/bootstrap-slider.min.js"></script>
+    <script src="../assets/js/vendors/jquery.countdown.min.js"></script>
+    <script src="../assets/js/vendors/jquery.easing.min.js"></script>
+    <script src="../assets/js/vendors/owl.carousel.min.js"></script>
+    <script src="../assets/js/vendors/validator.min.js"></script>
+    <script src="../assets/js/vendors/jquery.waypoints.min.js"></script>
+    <script src="../assets/js/vendors/jquery.rcounterup.js"></script>
+    <script src="../assets/js/vendors/magnific-popup.min.js"></script>
+    <script src="../assets/js/vendors/hs.megamenu.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <!--endbuild-->
+</body>
+
+</html>
+
+</html>
