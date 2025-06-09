@@ -282,8 +282,15 @@
                                                 <h2><u class="res_u">2</u>SOAX</h2>
                                                 <p class="lead">SOAX是访问网飞内容的最佳代理服务之一。它以其广阔的地理覆盖范围脱颖而出，提供来自全球120多个国家的代理，包括住宅和移动代理的组合，总计超过850万个IP地址。用户可以通过用户名/密码或IP白名单进行身份验证，确保安全访问。尽管有一小时免费试用和高延迟等限制，Soax仍提供了出色的定位支持，允许用户根据州、城市、居住区域和移动运营商来定位代理。</p>
                                                 <ul class="list-unstyled tech-feature-list">
-                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>支持：</strong> HTTP(S), SOCKS5, UDP，白名单</li>
-                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>价格：</strong> $6.6/GB起</li>
+                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span>支持
+                                                        <strong>HTTP、SOCKS5</strong>
+                                                    </li>
+                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>ISP代理:</strong> $99/月，3天1.99美元试用
+                                                    </li>
+                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>静态住宅代理IP:</strong> $99/月，3天1.99美元试用
+                                                    </li>
+                                                    <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><strong>移动代理IP:</strong> $99/月，3天1.99美元试用
+                                                    </li>
                                                 </ul>
                                                 <div class="action-btns mt-4">
                                                     <a href="../affiliates.html?aff=5555" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去Soax官网</a>
@@ -292,7 +299,7 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6">
                                             <div class="cta-new-wrap">
-                                                <img src="../assets/img/iproyal_1580.png" alt="hosting" class="img-fluid">
+                                                <img src="../assets/img/Soax Proxy.png" alt="hosting" class="img-fluid">
                                                 <p class="lead">支持国家：
                                                     </p><ul class="list-inline domain-search-list guojia-white">
                                                         <li class="list-inline-item">
@@ -628,7 +635,7 @@
                                                     </li>
                                                 </ul>
                                                 <div class="action-btns mt-4">
-                                                    <a href="../affiliates.html?aff=68119" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去WebShare官网</a>
+                                                    <a href="../affiliates.html?aff=68119" target="_blank" rel="nofollow noopener" class="btn secondary-solid-btn">去 Decodo 官网</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -837,9 +844,10 @@
                                                 </div>
                                             </div>
                                             <div class="action-btns mt-4">
-                                                <!-- 隐藏优惠码内容 -->
-                                                <div class="action-btns mt-4" id="discount-code" style="display: none;">IPR50</div>
-                                                <button class="btn btn-danger" id="copy-code-btn">IPR50 | 住宅代理50%优惠</button>
+                                                <!-- 复制按钮和隐藏文本 -->
+                                                <div class="action-btns mt-4">
+                                                    <button class="copy-button btn secondary-solid-btn" data-clipboard-text="RESI50">住宅优惠50% | 点击复制</button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-6">
@@ -1225,9 +1233,6 @@
                             <a href="javascript:;" onclick="goDiv('items-center-100')" class="view-details-link">MyPrivateProxy<span class="ti-angle-right"></span></a>
                         </div>
                         <div class="partner-info">
-                            <a href="javascript:;" onclick="goDiv('items-center-888')" class="view-details-link">Webshare<span class="ti-angle-right"></span></a>
-                        </div>
-                        <div class="partner-info">
                             <a href="javascript:;" onclick="goDiv('items-center-101')" class="view-details-link">ProxyEmpire<span class="ti-angle-right"></span></a>
                         </div>
                         <div class="partner-info">
@@ -1273,25 +1278,6 @@ scrollTop: a
 }, 'slow');
 }
 
-document.getElementById('copy-code-btn').addEventListener('click', function() {
-                                                // 获取隐藏的优惠码内容
-                                                var code = document.getElementById('discount-code').innerText;
-                                        
-                                                // 创建一个临时的输入框用于复制
-                                                var tempInput = document.createElement('input');
-                                                tempInput.value = code;
-                                                document.body.appendChild(tempInput);
-                                        
-                                                // 选中输入框内容并执行复制操作
-                                                tempInput.select();
-                                                document.execCommand('copy');
-                                        
-                                                // 删除临时输入框
-                                                document.body.removeChild(tempInput);
-                                        
-                                                // 可选：提示用户复制成功
-                                                alert('优惠码已复制到剪贴板！');
-                                            });
     </script>
     <!--build:js-->
     <script src="../assets/js/vendors/jquery-3.5.1.min.js"></script>
@@ -1306,6 +1292,7 @@ document.getElementById('copy-code-btn').addEventListener('click', function() {
     <script src="../assets/js/vendors/magnific-popup.min.js"></script>
     <script src="../assets/js/vendors/hs.megamenu.js"></script>
     <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/copyText.js"></script>
     <!--endbuild-->
 
 
