@@ -8016,6 +8016,10 @@ a.badge:hover {
     background-color: #007bff;
 }
 
+.badge-primary3 {
+    color: #fff;
+    background-color: #FF0000;
+}
 
 /* line 6, src/assets/scss/vendors/bootstrap.min.css */
 
