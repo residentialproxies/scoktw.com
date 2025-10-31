@@ -73532,6 +73532,91 @@ pre code::-webkit-scrollbar-thumb {
     top: 0;
     bottom: 0;
     background: rgba(2, 52, 92, .75);
+
+  /* ABC Proxy 联系方式样式 */
+  .contact-info-box {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid #664efc;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .contact-title {
+      color: #664efc;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 15px;
+  }
+
+  .contact-list {
+      margin: 0;
+      padding: 0;
+  }
+
+  .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(102, 78, 252, 0.1);
+  }
+
+  .contact-item:last-child {
+      border-bottom: none;
+  }
+
+  .contact-icon {
+      width: 28px;
+      height: 28px;
+      background: #664efc;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      font-size: 14px;
+      flex-shrink: 0;
+  }
+
+  .contact-label {
+      color: #495057;
+      font-weight: 500;
+      margin-right: 8px;
+      min-width: 80px;
+  }
+
+  .contact-link {
+      color: #664efc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+  }
+
+  .contact-link:hover {
+      color: #4834df;
+      text-decoration: underline;
+  }
+
+  .contact-text {
+      color: #28a745;
+      font-weight: 500;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+      .contact-info-box {
+          padding: 15px;
+      }
+
+      .contact-item {
+          flex-wrap: wrap;
+      }
+
+      .contact-label {
+          min-width: auto;
+      }
+  }
 }
 
 
