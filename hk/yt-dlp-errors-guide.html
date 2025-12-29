@@ -268,11 +268,11 @@
                                 <div class="post-content ui-sortable">
                                     <p>當你爲 AI 模型下載關鍵訓練數據進行到一半時,突然出現了這個錯誤:<code>HTTP Error 429: Too Many Requests</code>。又或者是那個令人頭疼的 <code>Sign in to confirm you're not a bot</code> 提示。對於使用 yt-dlp 的開發者和數據工程師來說,這些錯誤不僅僅是小麻煩——它們是能讓整個數據管道癱瘓、耗費數小時調試時間的攔路虎。</p>
 
-                                    <p>隨着視頻平臺在 2024-2025 年間不斷加強反自動化措施,yt-dlp 用戶面臨着日益嚴峻的技術挑戰。根據 GitHub 問題跟蹤統計,每天有數千名開發者遇到這些錯誤,其中 HTTP 403 和機器人檢測錯誤自 2024 年初以來增長了 300%。提取工具與平臺對抗措施之間的軍備競賽不斷升級,從業者需要及時瞭解最新的解決方案和變通方法。</p>
+                                    <p>隨着視頻平臺在 2024-2026 年間不斷加強反自動化措施,yt-dlp 用戶面臨着日益嚴峻的技術挑戰。根據 GitHub 問題跟蹤統計,每天有數千名開發者遇到這些錯誤,其中 HTTP 403 和機器人檢測錯誤自 2024 年初以來增長了 300%。提取工具與平臺對抗措施之間的軍備競賽不斷升級,從業者需要及時瞭解最新的解決方案和變通方法。</p>
 
                                     <p>本綜合指南深入剖析了最常見的 yt-dlp 錯誤,提供從快速命令行修復到應對大規模提取的架構方法等實用解決方案。無論你是爲研究下載少量視頻,還是構建包含數百萬樣本的數據集,瞭解這些錯誤及其解決路徑對於維護可靠的工作流程都至關重要。</p>
 
-                                    <h2 class="post-title">2025 年的 yt-dlp</h2>
+                                    <h2 class="post-title">2026 年的 yt-dlp</h2>
 
                                     <p>yt-dlp 已經從一個簡單的命令行工具發展成爲視頻提取工作流程的事實標準。它誕生於 youtube-dl 的分支,現在服務於各種應用場景,從研究人員存檔內容到 AI 公司構建需要數十億視頻樣本的多模態訓練數據集。該工具的架構優先考慮靈活性和可擴展性,允許開發者自定義提取參數、輸出格式和身份驗證機制。</p>
 
@@ -321,7 +321,7 @@ yt-dlp --proxy http://username:password@proxy.example.com:8080 [URL]</code></pre
 
                                     <h2 class="post-title" id="items-center-222">2. HTTP 403:禁止訪問</h2>
 
-                                    <p>HTTP 403 錯誤代表着比速率限制更嚴重的封鎖類別,表明服務器已將你的請求識別爲有問題並主動拒絕處理。與臨時速率限制不同,403 錯誤通常意味着你的 IP 地址、請求籤名或會話已被反機器人系統標記。隨着平臺在 2025 年部署能夠以越來越高的準確度識別自動訪問模式的機器學習模型,這類錯誤變得更加普遍。</p>
+                                    <p>HTTP 403 錯誤代表着比速率限制更嚴重的封鎖類別,表明服務器已將你的請求識別爲有問題並主動拒絕處理。與臨時速率限制不同,403 錯誤通常意味着你的 IP 地址、請求籤名或會話已被反機器人系統標記。隨着平臺在 2026 年部署能夠以越來越高的準確度識別自動訪問模式的機器學習模型,這類錯誤變得更加普遍。</p>
 
                                     <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>ERROR: unable to download video data: HTTP Error 403: Forbidden
 [download] Got server HTTP error: HTTP Error 403: Forbidden</code></pre>
@@ -402,7 +402,7 @@ yt-dlp --geo-bypass-country JP --proxy socks5://jp-proxy.example.com:1080 [URL]<
 
                                     <h2 class="post-title" id="items-center-555">5. Cookie 和身份驗證失敗</h2>
 
-                                    <p>身份驗證的複雜性超越了最初的機器人檢測,涵蓋 cookie 生命週期管理、瀏覽器兼容性問題、無頭環境約束以及平臺重新驗證要求。Cookie 過期時間在 2024-2025 年急劇縮短,典型有效期從幾周縮短到大約 24 小時。</p>
+                                    <p>身份驗證的複雜性超越了最初的機器人檢測,涵蓋 cookie 生命週期管理、瀏覽器兼容性問題、無頭環境約束以及平臺重新驗證要求。Cookie 過期時間在 2024-2026 年急劇縮短,典型有效期從幾周縮短到大約 24 小時。</p>
 
                                     <h4 style="font-weight: 600; margin-top: 20px;"><span style="background: #bee3f8; color: #2c5282; padding: 4px 10px; border-radius: 3px; font-size: 0.85em; margin-right: 8px;">基礎</span> Cookie 管理</h4>
 
@@ -741,7 +741,7 @@ yt-dlp --download-archive archive.txt [URL]</code></pre>
             <div class="container">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-md-5 col-lg-5">
-                        <p class="copyright-text pb-0 mb-0">Copyrights © 2025. All rights reserved by
+                        <p class="copyright-text pb-0 mb-0">Copyrights © 2026. All rights reserved by
                             <a href="https://scoktw.com" target="_blank">代理IP</a>
                         </p>
                     </div>
