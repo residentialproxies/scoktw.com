@@ -73639,3 +73639,23 @@ pre code::-webkit-scrollbar-thumb {
 
 
 /*# sourceMappingURL=main.css.map */
+/* 价格和折扣高亮样式 */
+.highlight-price {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.discount-badge {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-left: 8px;
+    display: inline-block;
+}
