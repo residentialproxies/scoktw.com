@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--title-->
+    <title>如何使用Bright Data MCP构建亚马逊价格监控系统</title>
+
+    <!-- SEO Meta description -->
+    <meta name="description" content="本指南详细介绍如何使用Bright Data MCP协议构建亚马逊价格监控系统，包括突破反爬虫机制、MCP客户端实现、数据提取、价格监控逻辑和生产部署方案。">
+    <meta name="keywords" content="Bright Data MCP,亚马逊价格监控,电商数据采集,反爬虫,住宅代理IP,价格监控系统">
+    <meta name="author" content="ThemeTags">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="scok代理IP博客">
+    <!-- website name -->
+    <meta property="og:site" content="https://scoktw.com/">
+    <!-- website link -->
+    <meta property="og:title" content="使用Bright Data MCP构建亚马逊价格监控系统">
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="本指南详细介绍如何使用Bright Data MCP协议构建亚马逊价格监控系统，包括突破反爬虫机制、MCP客户端实现、数据提取、价格监控逻辑和生产部署方案。">
+
+    <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="https://scoktw.com/">
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article">
+
+    <!--favicon icon-->
+    <link rel="icon" href="assets/img/favicon.ico" type="image/png" sizes="16x16">
+
+    <!--google fonts-->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+
+    <!--build:css-->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <script async="" src="" charset="UTF-8" crossorigin="*"></script><script async="" src="" charset="UTF-8" crossorigin="*"></script><script async="" src="" charset="UTF-8" crossorigin="*"></script><script async="" src="" charset="UTF-8" crossorigin="*"></script><script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "什么是Bright Data MCP?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>Bright Data MCP是一种基于Model Context Protocol的数据采集解决方案，通过全球代理网络、Web Unlocker技术和JavaScript渲染引擎，帮助开发者突破亚马逊等平台的反爬虫机制。</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "亚马逊的反爬虫机制有哪些?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "亚马逊的反爬虫系统包含多层防护：IP封锁、行为分析、动态内容加载、验证码系统和浏览器指纹识别。传统爬虫方案几乎无法绑过这些防护。"
+                }
+            }, {
+                "@type": "Question",
+                "name": "如何获取Bright Data API密钥?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "<p>Bright Data为新用户提供免费试用：前3个月每月5000次请求免费。注册后进入控制面板的Settings → Users页面，点击Generate API Token按钮生成密钥。</p>"
+                }
+            }, {
+                "@type": "Question",
+                "name": "价格监控系统如何处理速率限制?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "系统使用指数退避策略处理速率限制：每次失败后等待时间翻倍，同时通过Redis缓存减少重复请求，并使用异步并发提升性能。"
+                }
+            }]
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <!--header section start-->
+    <header id="header" class="header-main headroom">
+
+        <!--main header menu start-->
+        <div id="logoAndNav" class="main-header-menu-wrap bg-transparent affix">
+            <div class="container">
+                <nav class="js-mega-menu navbar navbar-expand-md header-nav hs-menu-initialized hs-menu-horizontal">
+
+                    <!--logo start-->
+                    <a class="navbar-brand" href="index.html"><img src="assets/img/logo-white.png" width="120" alt="logo" class="img-fluid"></a>
+                    <!--logo end-->
+
+                    <!--responsive toggle button start-->
+                    <button type="button" class="navbar-toggler btn" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                        <span id="hamburgerTrigger">
+                            <span class="fas fa-bars"></span>
+                        </span>
+                    </button>
+                    <!--responsive toggle button end-->
+
+                    <!--main menu start-->
+                    <div id="div_1"></div>
+                    <!--main menu start-->
+                    <div id="navBar" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto main-navbar-nav">
+                            <!--home end-->
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="index.html" aria-haspopup="true" aria-expanded="false">全球静态住宅代理IP商列表</a>
+                                <!--services mega menu start-->
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">全球静态住宅代理IP商列表（按地区分类）</span>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shared-hosting.html" title="美国代理IP" rel="bookmark">美国代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_china.html" title="中国代理IP" rel="bookmark">中国代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_europe.html" title="欧洲代理IP" rel="bookmark">欧洲代理IP <span class="badge badge-danger ml-2">Hot</span></a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_taiwan.html" title="台湾代理ip" rel="bookmark">台湾代理ip</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_hongkong.html" title="香港代理IP" rel="bookmark">香港代理IP</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_germany.html" title="德国代理IP" rel="bookmark">德国代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_uk.html" title="英国代理IP" rel="bookmark">英国代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_france.html" title="法国代理IP" rel="bookmark">法国代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_korea.html" title="韩国代理ip" rel="bookmark">韩国代理ip</a>
+                                                    </li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_jpan.html" title="日本代理IP" rel="bookmark">日本代理IP <span class="badge badge-danger ml-2">Hot</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_eussia.html" title="俄罗斯代理IP" rel="bookmark">俄罗斯代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="spain_static_residential_agents.html" title="西班牙ISP代理" rel="bookmark">西班牙ISP代理</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="australia_static_residential_agents.html" title="澳大利亚静态代理IP" rel="bookmark">澳大利亚静态代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_brazil.html" title="巴西IP代理" rel="bookmark">巴西IP代理</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_ip_vietnam.html" title="越南代理IP" rel="bookmark">越南代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mega Menu Banner -->
+                                    <div class="secondary-bg">
+                                        <div class="u-header__product-banner-content position-relative z-index text-center text-white">
+                                            <div class="mb-4">
+                                                <h5 class="text-white">精选全球排名靠前的12家IP代理商！</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Mega Menu Banner -->
+                                </div>
+                                <!--services mega menu end-->
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="800px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">代理IP商列表(按类型)</a>
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 800px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">精选全球代理IP商（按类型）</span>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="static_residential_proxy_ip.html" title="最佳静态住宅代理IP" rel="bookmark">最佳静态住宅代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="data_center_proxy_ip.html" title="最佳数据中心代理IP" rel="bookmark">最佳数据中心代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="online_shopping.html" title="最佳电商网购代理IP" rel="bookmark">最佳电商网购代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="rotate_proxy_ip.html" title="最佳动态代理IP" rel="bookmark">最佳动态代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="best_exclusive_ipv4_proxy.html" title="最佳独享IPv4代理" rel="bookmark">最佳独享IPv4代理</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="best_exclusive_socks5_proxy.html" title="最佳socks5代理IP" rel="bookmark">最佳socks5代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="tiktok_static_proxy_ip.html" title="TikTok静态代理IP" rel="bookmark">TikTok静态代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="Instagram_static_proxy_ip.html" title="Instagram 静态代理IP" rel="bookmark">Instagram 静态代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="line_static_proxy_ip.html" title="批量登录Line账号静态代理" rel="bookmark">Line 静态代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="facebook_static_proxy_ip.html" title="Facebook 静态代理IP" rel="bookmark">Facebook 静态代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="whatsapp_static_proxy_ip.html" title="WhatsApp 静态代理IP" rel="bookmark">WhatsApp 静态代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="article_list.html" title="最佳代理IP测评博客" rel="bookmark"><span class="badge badge-primary ml-1">列表</span> 最佳代理IP测评博客</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="article_list_2.html" title="什么是代理IP?" rel="bookmark"><span class="badge badge-primary ml-1">列表</span> 什么是代理IP?</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="article_list_3.html" title="如何使用代理IP?" rel="bookmark"><span class="badge badge-primary ml-1">列表</span> 如何使用代理IP?</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="cheap_static_proxy.html" title="便宜的静态代理IP" rel="bookmark">便宜的静态代理IP</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="monthly_payment_for_long-term_proxy_ip.html" title="11+月付长效静态代理IP" rel="bookmark">11+月付长效静态代理IP</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item hs-has-mega-menu custom-nav-item" data-max-width="600px" data-position="right">
+                                <a id="elementsMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="proxy_ip_china.html" aria-haspopup="true" aria-expanded="false">代理IP商测评列表</a>
+                                <!--services mega menu start-->
+                                <div class="hs-mega-menu main-sub-menu u-header__mega-menu-position-right-fix--md animated hs-position-right" aria-labelledby="elementsMegaMenu" style="max-width: 600px; display: none;">
+                                    <div class="mega-menu-wrap">
+                                        <span class="sub-menu-title">代理IP商测评列表</span>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="iproyal_proxy_ip.html" title="IPRoyal测评总结" rel="bookmark">IPRoyal测评总结</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="shifter_proxy_ip.html" title="Shifter测评总结" rel="bookmark">Shifter测评总结</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="decodo_proxy_ip.html" title="Decodo测评总结" rel="bookmark">Decodo测评总结</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="thordata_proxy_ip.html" title="thordata代理测试总结" rel="bookmark">Thordata代理测试总结</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="toolip_proxy_ip.html" title="toolip代理测试总结" rel="bookmark">Toolip代理测试总结</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <ul class="sub-menu-nav-group">
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_seller_ip.html" title="Proxy-seller测评总结" rel="bookmark">Proxy-seller测评总结</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxy_cheap_proxy_ip.html" title="Proxy Cheap速度、性能测试" rel="bookmark">Proxy Cheap速度、性能测试</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="bright_data_proxy_ip.html" title="Bright data测评总结" rel="bookmark">Bright Data测试总结</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="soax_proxy_ip.html" title="SOAX测评总结" rel="bookmark">SOAX测试总结</a></li>
+                                                    <li><a class="nav-link sub-menu-nav-link" href="proxyempire_proxy_ip.html" title="proxyempire测评总结" rel="bookmark">Proxyempire测评总结</a></li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <!--services mega menu end-->
+                            <li class="nav-item header-nav-last-item d-flex align-items-center">
+                                <a href="article_list.html" class="btn outline-white-btn animated-btn">文章列表</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--main menu end-->
+                </nav>
+            </div>
+        </div>
+        <!--main header menu end-->
+    </header>
+    <!--header section end-->
+    <!--header section end-->
+
+
+
+    <div class="main">
+
+        <!--hero section start-->
+        <!--hero section start-->
+        <section class="hero-equaubs hero-equal-height section-xl section-header text-white flex-column d-flex justify-content-center" style="background: url(../assets/img/bg-01.jpg)no-repeat center center / cover;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-9 col-lg-10">
+                        <div class="hero-content-left text-white text-center">
+                            <h1 class="text-white">使用Bright Data MCP构建亚马逊价格监控系统</h1>
+                            <p class="lead">在电商领域，价格是影响购买决策的核心因素。本指南详细介绍如何使用Bright Data MCP协议突破亚马逊反爬虫机制，构建一套完整的自动化价格监控系统，从环境配置到生产部署，涵盖所有关键环节。</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-us-promo promo-top pt-100 mt--165">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-6">
+                        <div class="card single-promo-card single-promo-hover shadow-sm">
+                            <div class="card-body py-5">
+                                <div class="post-content ui-sortable">
+                                    <p>根据行业调研数据，超过60%的消费者会在购买前对比至少3个平台的价格，而价格差异超过5%就会导致70%的流量流向竞争对手。对于亚马逊卖家而言，实时监控竞品价格、快速响应市场变化是保持竞争力的关键。然而，手动检查几十个竞品的价格不仅耗时，而且无法做到实时性，自动化的价格监控系统成为刚需。</p>
+
+                                    <p>亚马逊拥有全球最强大的反爬虫系统之一，传统的爬虫方案（requests + BeautifulSoup）几乎失效，即使是Selenium和Puppeteer也会在几分钟内被检测并封锁。本指南将介绍如何使用Bright Data MCP协议突破这些限制，构建一套生产级的价格监控系统。</p>
+
+                                    <h2 class="post-title" id="items-center-111">1. 亚马逊的反爬虫机制</h2>
+
+                                    <p>亚马逊的技术防御体系包含多个层级，了解这些机制对于设计有效的数据采集方案至关重要。</p>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">五层防护体系</h4>
+
+                                    <p><strong>第一层：IP封锁</strong> - 亚马逊会监控访问频率，短时间内大量请求会触发临时封禁。</p>
+
+                                    <p><strong>第二层：行为分析</strong> - 鼠标移动轨迹、滚动速度、页面停留时间等行为特征被用来识别爬虫。</p>
+
+                                    <p><strong>第三层：动态内容加载</strong> - 价格、库存等核心数据通过JavaScript异步加载，传统的HTTP请求无法获取。</p>
+
+                                    <p><strong>第四层：验证码系统</strong> - 可疑访问会立即触发CAPTCHA验证。</p>
+
+                                    <p><strong>第五层：浏览器指纹识别</strong> - 最复杂的防护层。亚马逊通过Canvas指纹、WebGL参数、字体列表、Navigator对象等数十个维度生成唯一的设备指纹，即使更换IP地址，相同的浏览器指纹也会被识别为同一设备。</p>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">Bright Data MCP的三层突破技术</h4>
+
+                                    <p>Bright Data MCP通过三层技术突破亚马逊的防护：</p>
+
+                                    <div class="row" style="margin: 30px 0;">
+                                        <div class="col-md-4 col-sm-6" style="margin-bottom: 15px;">
+                                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 6px; text-align: center; color: white;">
+                                                <div style="font-size: 1.5em; font-weight: bold;">全球代理网络</div>
+                                                <div style="font-size: 0.9em; margin-top: 5px; opacity: 0.9;">7200万真实IP地址覆盖196个国家</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6" style="margin-bottom: 15px;">
+                                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 6px; text-align: center; color: white;">
+                                                <div style="font-size: 1.5em; font-weight: bold;">Web Unlocker</div>
+                                                <div style="font-size: 0.9em; margin-top: 5px; opacity: 0.9;">动态指纹生成、行为模拟、验证码处理</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6" style="margin-bottom: 15px;">
+                                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 6px; text-align: center; color: white;">
+                                                <div style="font-size: 1.5em; font-weight: bold;">JS渲染引擎</div>
+                                                <div style="font-size: 0.9em; margin-top: 5px; opacity: 0.9;">基于无头Chrome完整执行页面脚本</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>MCP（Model Context Protocol）协议的加入进一步简化了集成。开发者无需处理复杂的代理管理、反检测逻辑，只需调用统一的API接口，所有技术细节由Bright Data在云端处理。这种架构将数据采集的复杂度降低了90%以上。</p>
+
+                                    <h2 class="post-title" id="items-center-222">2. 环境准备与API配置</h2>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">获取Bright Data API密钥</h4>
+
+                                    <p>Bright Data为新用户提供了慷慨的免费试用计划：前3个月每月5000次请求完全免费，无需绑定信用卡。注册流程非常简单，访问<a href="https://get.brightdata.com/d_mcpserver" target="_blank" rel="nofollow noopener">官网注册页面</a>填写基本信息即可。注册成功后，进入控制面板的Settings → Users页面，点击Generate API Token按钮生成API密钥。</p>
+
+                                    <div style="background: #fff5f5; border-left: 4px solid #fc8181; padding: 20px 25px; margin: 25px 0; border-radius: 4px;">
+                                        <strong>重要提示：</strong>API密钥只显示一次，请务必妥善保管。建议将密钥存储在环境变量中，而不是硬编码在代码里。
+                                    </div>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;"><span style="background: #bee3f8; color: #2c5282; padding: 4px 10px; border-radius: 3px; font-size: 0.85em; margin-right: 8px;">Linux/Mac</span> 环境变量配置</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code># 在~/.bashrc或~/.zshrc中添加
+export BRIGHT_DATA_TOKEN="your_api_token_here"</code></pre>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;"><span style="background: #feebc8; color: #7c2d12; padding: 4px 10px; border-radius: 3px; font-size: 0.85em; margin-right: 8px;">Windows</span> 环境变量配置</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code># 在项目的.env文件中配置
+BRIGHT_DATA_TOKEN=your_api_token_here</code></pre>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">Python环境配置</h4>
+
+                                    <p>本指南使用Python 3.8+作为开发语言，建议创建虚拟环境隔离项目依赖：</p>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code># 创建虚拟环境
+python -m venv venv
+
+# 激活虚拟环境（Linux/Mac）
+source venv/bin/activate
+
+# 激活虚拟环境（Windows）
+venv\Scripts\activate
+
+# 安装依赖
+pip install requests beautifulsoup4 lxml pandas python-dotenv schedule aiohttp</code></pre>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">项目结构设计</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>amazon-price-monitor/
+├── config/
+│   ├── __init__.py
+│   └── settings.py          # 配置参数
+├── src/
+│   ├── __init__.py
+│   ├── mcp_client.py         # MCP客户端
+│   ├── scraper.py            # 亚马逊页面解析
+│   ├── monitor.py            # 价格监控逻辑
+│   └── storage.py            # 数据存储
+├── data/
+│   ├── products.json         # 监控产品列表
+│   └── prices.db             # SQLite数据库
+├── logs/
+│   └── monitor.log           # 日志文件
+├── main.py                   # 主程序入口
+├── requirements.txt
+└── .env                      # 环境变量</code></pre>
+
+                                    <h2 class="post-title" id="items-center-333">3. MCP客户端核心实现</h2>
+
+                                    <p>MCP客户端是与Bright Data服务通信的核心组件，下面是一个生产级的实现：</p>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>import os
+import json
+import time
+import logging
+from typing import Dict, List, Any, Optional
+from datetime import datetime
+import requests
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
+
+class BrightDataMCPClient:
+    """Bright Data MCP客户端实现"""
+
+    def __init__(self, api_token: Optional[str] = None):
+        self.api_token = api_token or os.getenv('BRIGHT_DATA_TOKEN')
+        if not self.api_token:
+            raise ValueError("API Token未设置")
+
+        self.base_url = f"https://mcp.brightdata.com/mcp?token={self.api_token}"
+        self.session = requests.Session()
+        self.session_id: Optional[str] = None
+        self.message_id = 1
+
+        # 配置请求头
+        self.session.headers.update({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/event-stream',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        })
+
+    def _send_request(self, payload: Dict[str, Any], max_retries: int = 3) -> Dict[str, Any]:
+        """发送JSON-RPC请求（带重试机制）"""
+        if self.session_id:
+            self.session.headers['mcp-session-id'] = self.session_id
+
+        for attempt in range(max_retries):
+            try:
+                response = self.session.post(self.base_url, json=payload, timeout=30)
+
+                # 保存会话ID
+                if 'mcp-session-id' in response.headers:
+                    self.session_id = response.headers['mcp-session-id']
+
+                # 处理速率限制
+                if response.status_code == 429:
+                    retry_after = int(response.headers.get('Retry-After', 60))
+                    time.sleep(retry_after)
+                    continue
+
+                response.raise_for_status()
+                return response.json()
+
+            except requests.RequestException as e:
+                if attempt == max_retries - 1:
+                    raise
+                time.sleep(2 ** attempt)  # 指数退避
+
+    def initialize(self) -> bool:
+        """初始化MCP协议"""
+        init_payload = {
+            "jsonrpc": "2.0",
+            "id": self.message_id,
+            "method": "initialize",
+            "params": {
+                "protocolVersion": "2024-11-05",
+                "capabilities": {"roots": {"listChanged": True}, "sampling": {}},
+                "clientInfo": {"name": "Amazon-Price-Monitor", "version": "1.0.0"}
+            }
+        }
+        self.message_id += 1
+        response = self._send_request(init_payload)
+
+        if 'error' in response:
+            return False
+
+        # 发送initialized通知
+        self._send_request({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        return True
+
+    def scrape_amazon_product(self, url: str) -> Optional[str]:
+        """抓取亚马逊产品页面（返回Markdown格式）"""
+        scrape_payload = {
+            "jsonrpc": "2.0",
+            "id": self.message_id,
+            "method": "tools/call",
+            "params": {
+                "name": "scrape_as_markdown",
+                "arguments": {"url": url, "formats": ["markdown"]}
+            }
+        }
+        self.message_id += 1
+        response = self._send_request(scrape_payload)
+
+        if 'error' in response:
+            return None
+
+        # 提取Markdown内容
+        content_list = response.get('result', {}).get('content', [])
+        markdown_text = ''
+        for item in content_list:
+            if isinstance(item, dict) and 'text' in item:
+                markdown_text += item['text']
+
+        return markdown_text
+
+    def close(self):
+        """关闭会话"""
+        if self.session:
+            self.session.close()</code></pre>
+
+                                    <div style="background: #f0fff4; border-left: 4px solid #48bb78; padding: 20px 25px; margin: 25px 0; border-radius: 4px;">
+                                        <strong>关键设计要点：</strong>
+                                        <ul style="margin-top: 10px; margin-bottom: 0;">
+                                            <li><strong>会话管理</strong>：通过mcp-session-id保持会话连续性，避免重复初始化</li>
+                                            <li><strong>指数退避</strong>：每次失败后等待时间翻倍（1秒、2秒、4秒）</li>
+                                            <li><strong>速率限制处理</strong>：从Retry-After头部读取等待时间，智能重试</li>
+                                            <li><strong>超时设置</strong>：30秒超时防止请求长时间挂起</li>
+                                        </ul>
+                                    </div>
+
+                                    <h2 class="post-title" id="items-center-444">4. 亚马逊页面数据提取</h2>
+
+                                    <p>亚马逊的产品页面结构相当复杂，价格信息分散在多个位置。核心价格通常在<code>id="priceblock_ourprice"</code>或<code>id="priceblock_dealprice"</code>的元素中。</p>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">基于正则表达式的提取方法</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>import re
+from typing import Dict, Optional
+from datetime import datetime
+
+class AmazonProductExtractor:
+    """亚马逊产品数据提取器"""
+
+    @staticmethod
+    def extract_price(markdown: str) -> Optional[float]:
+        """提取价格信息"""
+        patterns = [
+            r'\$\s?([\d,]+\.?\d*)',           # $19.99 或 $ 19.99
+            r'USD\s?([\d,]+\.?\d*)',          # USD 19.99
+            r'Price:\s*\$\s*([\d,]+\.?\d*)',  # Price: $19.99
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, markdown, re.IGNORECASE)
+            if match:
+                price_str = match.group(1).replace(',', '')
+                try:
+                    return float(price_str)
+                except ValueError:
+                    continue
+        return None
+
+    @staticmethod
+    def extract_title(markdown: str) -> Optional[str]:
+        """提取产品标题"""
+        patterns = [
+            r'^#\s+(.+)$',                   # 一级标题
+            r'Product Name:\s*(.+)',         # 产品名称
+            r'Amazon\.com\s*:\s*(.+)',       # Amazon.com: 产品名
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, markdown, re.MULTILINE)
+            if match:
+                title = match.group(1).strip()
+                if 10 < len(title) < 200:
+                    return title
+        return None
+
+    @staticmethod
+    def extract_availability(markdown: str) -> str:
+        """提取库存状态"""
+        markdown_lower = markdown.lower()
+
+        if any(p in markdown_lower for p in ['in stock', 'available', 'add to cart']):
+            return 'In Stock'
+        if any(p in markdown_lower for p in ['out of stock', 'unavailable']):
+            return 'Out of Stock'
+        return 'Unknown'
+
+    @staticmethod
+    def extract_all(markdown: str) -> Dict:
+        """提取所有产品信息"""
+        return {
+            'title': AmazonProductExtractor.extract_title(markdown),
+            'price': AmazonProductExtractor.extract_price(markdown),
+            'availability': AmazonProductExtractor.extract_availability(markdown),
+            'extracted_at': datetime.now().isoformat()
+        }</code></pre>
+
+                                    <h2 class="post-title" id="items-center-555">5. 价格监控系统架构</h2>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">数据模型设计</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>from dataclasses import dataclass, asdict
+from datetime import datetime
+from typing import Optional
+
+@dataclass
+class ProductPrice:
+    """价格记录数据模型"""
+    sku: str                    # 产品SKU（ASIN）
+    title: str                  # 产品标题
+    price: Optional[float]      # 当前价格
+    currency: str               # 货币代码
+    availability: str           # 库存状态
+    timestamp: datetime         # 采集时间
+    source_url: str             # 源URL
+
+@dataclass
+class PriceAlert:
+    """价格告警配置"""
+    sku: str
+    alert_type: str  # 'above', 'below', 'change_percent'
+    threshold: float
+    enabled: bool = True
+
+    def should_alert(self, current_price: float, previous_price: Optional[float] = None) -> bool:
+        """判断是否应该触发告警"""
+        if not self.enabled:
+            return False
+
+        if self.alert_type == 'above' and current_price > self.threshold:
+            return True
+        elif self.alert_type == 'below' and current_price < self.threshold:
+            return True
+        elif self.alert_type == 'change_percent' and previous_price:
+            change_percent = abs((current_price - previous_price) / previous_price * 100)
+            if change_percent >= self.threshold:
+                return True
+        return False</code></pre>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">监控核心逻辑</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>import time
+import schedule
+from typing import List, Dict, Optional
+
+class PriceMonitor:
+    """价格监控主控制器"""
+
+    def __init__(self, mcp_client, storage):
+        self.client = mcp_client
+        self.storage = storage
+        self.extractor = AmazonProductExtractor()
+        self.products = {}  # SKU -> URL映射
+        self.alerts = {}    # SKU -> Alert配置
+
+    def add_product(self, sku: str, url: str):
+        """添加监控产品"""
+        self.products[sku] = url
+
+    def set_alert(self, sku: str, alert: PriceAlert):
+        """设置价格告警"""
+        self.alerts[sku] = alert
+
+    def check_product(self, sku: str) -> Optional[ProductPrice]:
+        """检查单个产品的价格"""
+        if sku not in self.products:
+            return None
+
+        url = self.products[sku]
+        markdown = self.client.scrape_amazon_product(url)
+        if not markdown:
+            return None
+
+        # 提取数据
+        extracted = self.extractor.extract_all(markdown)
+
+        # 创建价格记录
+        price_record = ProductPrice(
+            sku=sku,
+            title=extracted.get('title', 'Unknown'),
+            price=extracted.get('price'),
+            currency='USD',
+            availability=extracted.get('availability', 'Unknown'),
+            timestamp=datetime.now(),
+            source_url=url
+        )
+
+        # 保存到数据库
+        self.storage.save_price(price_record)
+
+        # 检查告警
+        if sku in self.alerts and price_record.price:
+            previous = self.storage.get_recent_prices(sku, limit=1)
+            prev_price = previous[0].price if previous else None
+            if self.alerts[sku].should_alert(price_record.price, prev_price):
+                self._trigger_alert(sku, price_record)
+
+        return price_record
+
+    def start(self, interval_minutes: int = 60):
+        """启动定时监控"""
+        # 立即执行一次
+        for sku in self.products:
+            self.check_product(sku)
+            time.sleep(2)  # 避免请求过快
+
+        # 设置定时任务
+        schedule.every(interval_minutes).minutes.do(
+            lambda: [self.check_product(sku) for sku in self.products]
+        )
+
+        while True:
+            schedule.run_pending()
+            time.sleep(1)</code></pre>
+
+                                    <h2 class="post-title" id="items-center-666">6. 数据存储与趋势分析</h2>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">SQLite数据库实现</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>import sqlite3
+from typing import List, Dict
+from contextlib import contextmanager
+
+class SQLiteStorage:
+    """基于SQLite的数据存储"""
+
+    def __init__(self, db_path: str):
+        self.db_path = db_path
+        self._init_db()
+
+    @contextmanager
+    def _get_connection(self):
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        try:
+            yield conn
+        finally:
+            conn.close()
+
+    def _init_db(self):
+        """初始化数据库表"""
+        with self._get_connection() as conn:
+            conn.execute('''
+                CREATE TABLE IF NOT EXISTS price_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    sku TEXT NOT NULL,
+                    title TEXT,
+                    price REAL,
+                    currency TEXT DEFAULT 'USD',
+                    availability TEXT,
+                    timestamp DATETIME NOT NULL,
+                    source_url TEXT
+                )
+            ''')
+            conn.execute('''
+                CREATE INDEX IF NOT EXISTS idx_sku_timestamp
+                ON price_history(sku, timestamp)
+            ''')
+            conn.commit()
+
+    def save_price(self, price_record) -> bool:
+        """保存价格记录"""
+        try:
+            with self._get_connection() as conn:
+                conn.execute('''
+                    INSERT INTO price_history
+                    (sku, title, price, currency, availability, timestamp, source_url)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', (
+                    price_record.sku, price_record.title, price_record.price,
+                    price_record.currency, price_record.availability,
+                    price_record.timestamp, price_record.source_url
+                ))
+                conn.commit()
+                return True
+        except Exception:
+            return False
+
+    def get_price_statistics(self, sku: str, days: int = 30) -> Dict:
+        """获取价格统计信息"""
+        with self._get_connection() as conn:
+            cursor = conn.execute(f'''
+                SELECT COUNT(*) as count, AVG(price) as avg_price,
+                       MIN(price) as min_price, MAX(price) as max_price
+                FROM price_history
+                WHERE sku = ? AND price IS NOT NULL
+                AND timestamp >= datetime('now', '-{days} days')
+            ''', (sku,))
+            row = cursor.fetchone()
+            return dict(row) if row else {}</code></pre>
+
+                                    <h2 class="post-title" id="items-center-777">7. 性能优化与生产部署</h2>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">异步并发优化</h4>
+
+                                    <p>当监控产品数量超过50个时，串行抓取会导致总耗时过长。使用异步并发可以显著提升性能：</p>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code>import asyncio
+import aiohttp
+
+class AsyncPriceMonitor:
+    """异步价格监控器"""
+
+    def __init__(self, api_token: str, max_concurrent: int = 10):
+        self.api_token = api_token
+        self.base_url = f"https://mcp.brightdata.com/mcp?token={api_token}"
+        self.semaphore = asyncio.Semaphore(max_concurrent)
+
+    async def scrape_async(self, url: str, session: aiohttp.ClientSession):
+        """异步抓取页面"""
+        async with self.semaphore:
+            payload = {
+                "jsonrpc": "2.0", "id": 1,
+                "method": "tools/call",
+                "params": {"name": "scrape_as_markdown", "arguments": {"url": url}}
+            }
+            try:
+                async with session.post(self.base_url, json=payload, timeout=30) as response:
+                    data = await response.json()
+                    content_list = data.get('result', {}).get('content', [])
+                    return ''.join([item.get('text', '') for item in content_list if isinstance(item, dict)])
+            except Exception:
+                return None
+
+    async def check_products_async(self, products: list):
+        """并发检查多个产品"""
+        async with aiohttp.ClientSession() as session:
+            tasks = [self.scrape_async(p['url'], session) for p in products]
+            return await asyncio.gather(*tasks)</code></pre>
+
+                                    <h4 style="font-weight: 600; margin-top: 20px;">Docker容器化部署</h4>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code># Dockerfile
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+RUN mkdir -p logs data
+
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "main.py"]</code></pre>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code># docker-compose.yml
+version: '3.8'
+
+services:
+  price-monitor:
+    build: .
+    container_name: amazon-price-monitor
+    restart: unless-stopped
+    environment:
+      - BRIGHT_DATA_TOKEN=${BRIGHT_DATA_TOKEN}
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs</code></pre>
+
+                                    <pre style="background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 20px 0;"><code># 部署命令
+docker-compose build
+docker-compose up -d
+docker-compose logs -f</code></pre>
+
+                                    <h2 class="post-title" id="items-center-999">总结</h2>
+
+                                    <p>本指南提供了一个完整的亚马逊价格监控系统的实现方案，从环境配置、MCP客户端、数据提取、监控逻辑到数据分析和生产部署，涵盖了所有关键环节。核心优势在于使用Bright Data MCP绕过了亚马逊复杂的反爬虫机制，使得开发者可以专注于业务逻辑而非爬虫技术。</p>
+
+                                    <h2 class="post-title" id="items-center-010">相关文章</h2>
+
+                                    <ul class="list-unstyled tech-feature-list">
+                                        <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><a href="bright_data_proxy_ip.html">Bright Data代理IP测评</a></li>
+                                        <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><a href="online_shopping.html">最佳电商网购代理IP</a></li>
+                                        <li class="py-1"><span class="ti-control-forward mr-2 color-primary"></span><a href="static_residential_proxy_ip.html">最佳静态住宅代理IP</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!--footer section start-->
+    <footer class="footer-section">
+        <!--footer top start-->
+        <div class="footer-top gradient-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row footer-top-wrap">
+                            <div class="col-12">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">赞助商</h4>
+                                    <ul class="list-inline security-icon-list">
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=1111" target="_blank" rel="nofollow noopener"><img src="../assets/img/bright-data-logo.jpg" width="110" alt="bright-data" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=2222" target="_blank" rel="nofollow noopener"><img src="../assets/img/soax-logo.jpg" width="110" alt="soax" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=3333" target="_blank" rel="nofollow noopener"><img src="../assets/img/proxy-seller-logo.jpg" width="110" alt="proxy-seller" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=68114" target="_blank" rel="nofollow noopener"><img src="../assets/img/iproyal logo.jpg" width="110" alt="iproyal" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=5555" target="_blank" rel="nofollow noopener"><img src="../assets/img/decodo logo.jpg" width="110" alt="decodo" class="img-fluid"></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="../affiliates.html?aff=6666" target="_blank" rel="nofollow noopener"><img src="../assets/img/proxy ipv4 logo.jpg" width="110" alt="proxy ipv4" class="img-fluid"></a>
+                                        </li>
+                                    </ul>
+                                    <p><a class="nav-link" href="dai.html" target="_blank" rel="nofollow noopener" style="color: #ffffff; font-weight: 800;">商家合作？无法付款？找我</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row footer-top-wrap">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">博客</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/shared-hosting.html">最佳美国代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_china.html">最佳中国代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_europe.html">最佳欧洲代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_taiwan.html">最佳台湾代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/proxy_ip_uk.html">最佳英国代理IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">热门博客</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/what_is_a_proxy_ip.html">什么是代理IP?</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/fingerprint_browser.html">26款指纹浏览器</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/static_ip.html">静态IP和动态IP的区别</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/data_center_and_residential.html">数据中心IP和住宅IP的区别</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/between_socks5_proxy_and_https_proxy.html">比较Socks5代理和https代理的区别！</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="footer-nav-wrap text-white">
+                                    <h4 class="text-white">代理分类</h4>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/static_residential_proxy_ip.html">最佳静态住宅代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/data_center_proxy_ip.html">最佳数据中心代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/rotate_proxy_ip.html">最佳动态代理IP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/best_exclusive_ipv4_proxy.html">最佳独享IPv4代理</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://scoktw.com/best_exclusive_socks5_proxy.html">最佳socks5代理IP</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer top end-->
+
+
+        <div class="row align-items-center justify-content-between scroll-us-top scroll-us-to-target open">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="card popular-price text-center single-pricing-pack">
+                    <div class="pt-5">
+                        <h5 class="mb-0">目录</h5>
+                    </div>
+                    <div class="single-partner-wrap card-bottom-line white-bg shadow-sm rounded text-center p-2 mt-4">
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-111')" class="view-details-link">1. 亚马逊反爬虫机制<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-222')" class="view-details-link">2. 环境准备与API配置<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-333')" class="view-details-link">3. MCP客户端核心实现<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-444')" class="view-details-link">4. 亚马逊页面数据提取<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-555')" class="view-details-link">5. 价格监控系统架构<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-666')" class="view-details-link">6. 数据存储与趋势分析<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-777')" class="view-details-link">7. 性能优化与生产部署<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-999')" class="view-details-link">总结<span class="ti-angle-right"></span></a>
+                        </div>
+                        <div class="partner-info">
+                            <a href="javascript:;" onclick="goDiv('items-center-010')" class="view-details-link">相关资源<span class="ti-angle-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--footer copyright start-->
+        <div class="footer-bottom gray-light-bg py-3">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-md-5 col-lg-5">
+                        <p class="copyright-text pb-0 mb-0">Copyrights © 2026. All rights reserved by
+                            <a href="https://scoktw.com" target="_blank">代理IP</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer copyright end-->
+    </footer>
+    <!--footer section end-->
+
+
+    <!--bottom to top button start-->
+    <button class="scroll-top scroll-to-target open" data-target="html">
+        <span class="ti-rocket"></span>
+    </button>
+    <!--bottom to top button end-->
+    <script type="text/javascript">
+        var div_child = '<ul class="navbar-nav ml-auto main-navbar-nav"> <li class="nav-item hs-has-sub-menu custom-nav-item"> <a id="pagesMegaMenu" class="nav-link custom-nav-link main-link-toggle" href="/index.html" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu"><img src="assets/img/svg/cn.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">中文</a> <ul id="pagesSubMenu" class="hs-sub-menu main-sub-menu animated" aria-labelledby="pagesMegaMenu" style="min-width: 160px; display: none;"> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="hk/index.html"> <img src="assets/img/svg/hk.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">繁体</a> </li><li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="us/index.html"> <img src="assets/img/svg/us.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">English</a> </li> <li class="nav-item submenu-item"> <a class="nav-link sub-menu-nav-link" href="https://scoktw.com/ru/index.html"> <img src="assets/img/svg/ru.svg" alt="com" width="30" style="margin-right: 7px;" class="img-fluid">Русский</a> </li> </ul> </li> </ul>'
+        var c = document.getElementById('div_1');
+        c.innerHTML += div_child;
+
+        function goDiv(div) {
+            var a = $("#" + div).offset().top;
+            $("html,body").animate({
+                scrollTop: a
+            }, 'slow');
+        }
+
+    </script>
+    <!--build:js-->
+    <script src="assets/js/vendors/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendors/bootstrap-slider.min.js"></script>
+    <script src="assets/js/vendors/jquery.countdown.min.js"></script>
+    <script src="assets/js/vendors/jquery.easing.min.js"></script>
+    <script src="assets/js/vendors/owl.carousel.min.js"></script>
+    <script src="assets/js/vendors/validator.min.js"></script>
+    <script src="assets/js/vendors/jquery.waypoints.min.js"></script>
+    <script src="assets/js/vendors/jquery.rcounterup.js"></script>
+    <script src="assets/js/vendors/magnific-popup.min.js"></script>
+    <script src="assets/js/vendors/hs.megamenu.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/copyText.js"></script>
+    <!--endbuild-->
+
+
+
+
+</body></html>
